@@ -19,6 +19,7 @@ download Canadian charr genome in fasta format from https://www.ncbi.nlm.nih.gov
 
 # II.2 Trim and merge reads from Illumina sequencing and align them to masked genome to get methylation coverage files:
 getmethylcoverage.sh
+/
 need to add files for adapters and PhiX sequences
 
 # II.3 Perform analysis in Rstudio 
