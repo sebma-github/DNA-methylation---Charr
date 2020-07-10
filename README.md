@@ -37,9 +37,5 @@ extractgeneinfobetter.sh
 Needs to be run in the directory where the coverage files are (generated in II.2).
 Use DMRsbetweenmorphsforextraction.tsv / DMRsbetweenstageforextraction.tsv and DMRsqPCRgenesforextraction.tsv to extract the respective loci.
 
+# III.2 Use those coverage files to create graphs at both residue and DMR level.
 
-
-
-The workflow for paper 2 can be resumed as follows:
-Using files from II.3:
-Different R analyses.
