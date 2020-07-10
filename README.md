@@ -32,6 +32,13 @@ R scripts
 
 R scripts to make the graphs
 
+# III.1 Extract coverage information for specific loci. 
+extractgeneinfobetter.sh 
+Needs to be run in the directory where the coverage files are (generated in II.2).
+Use DMRsbetweenmorphsforextraction.tsv / DMRsbetweenstageforextraction.tsv and DMRsqPCRgenesforextraction.tsv to extract the respective loci.
+
+
+
 
 The workflow for paper 2 can be resumed as follows:
 Using files from II.3:
