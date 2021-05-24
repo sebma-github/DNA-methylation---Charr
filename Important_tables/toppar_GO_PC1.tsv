@@ -1,0 +1,30 @@
+GO.ID	Term	Annotated	Significant	Expected	Rank in classisKS	classicFisher	classisKS
+GO:0006323	DNA packaging	406	8	1.15	10167	2.1e-05	0.69
+GO:0006333	chromatin assembly or disassembly	346	7	0.98	12899	5.9e-05	0.92
+GO:0006334	nucleosome assembly	152	5	0.43	13329	7.5e-05	0.95
+GO:0031497	chromatin assembly	249	6	0.71	13493	7.9e-05	0.96
+GO:0071103	DNA conformation change	527	8	1.5	12143	0.00013	0.86
+GO:0006189	'de novo' IMP biosynthetic process	10	2	0.03	14411	0.00035	1.00
+GO:0030511	positive regulation of transforming grow...	133	4	0.38	13749	0.00057	0.97
+GO:1903846	positive regulation of cellular response...	133	4	0.38	13750	0.00057	0.97
+GO:0034728	nucleosome organization	281	5	0.8	11755	0.00125	0.83
+GO:0046148	pigment biosynthetic process	171	4	0.49	10314	0.00145	0.70
+GO:0006188	IMP biosynthetic process	23	2	0.07	11096	0.00194	0.77
+GO:0044706	multi-multicellular organism process	990	9	2.81	6358	0.00200	0.38
+GO:0045628	regulation of T-helper 2 cell differenti...	94	3	0.27	14407	0.00246	1.00
+GO:0007567	parturition	98	3	0.28	14361	0.00276	1.00
+GO:0009113	purine nucleobase biosynthetic process	29	2	0.08	7077	0.00307	0.43
+GO:0045064	T-helper 2 cell differentiation	110	3	0.31	14403	0.00383	1.00
+GO:0042440	pigment metabolic process	236	4	0.67	13529	0.00463	0.96
+GO:0046040	IMP metabolic process	36	2	0.1	9976	0.00471	0.67
+GO:0090100	positive regulation of transmembrane rec...	390	5	1.11	4981	0.00512	0.28
+GO:0065004	protein-DNA complex assembly	392	5	1.11	12322	0.00523	0.87
+GO:0017015	regulation of transforming growth factor...	393	5	1.11	6817	0.00529	0.41
+GO:1903844	regulation of cellular response to trans...	402	5	1.14	6459	0.00581	0.39
+GO:0000003	reproduction	6270	28	17.79	6553	0.00700	0.39
+GO:2001259	positive regulation of cation channel ac...	266	4	0.75	3605	0.00703	0.19
+GO:0007565	female pregnancy	794	7	2.25	5760	0.00745	0.33
+GO:0046112	nucleobase biosynthetic process	49	2	0.14	11679	0.00858	0.82
+GO:1903818	positive regulation of voltage-gated pot...	49	2	0.14	5578	0.00858	0.32
+GO:0007179	transforming growth factor beta receptor...	634	6	1.8	7301	0.00941	0.45
+GO:0042742	defense response to bacterium	640	6	1.82	12546	0.00983	0.89

@@ -1,0 +1,30 @@
+GO.ID	Term	Annotated	Significant	Expected	Rank in classisKS	classicFisher	classisKS
+GO:0031497	chromatin assembly	249	7	0.91	13525	3.8e-05	0.96
+GO:0006323	DNA packaging	406	8	1.48	10209	0.00013	0.69
+GO:0006334	nucleosome assembly	152	5	0.56	13383	0.00025	0.95
+GO:0006333	chromatin assembly or disassembly	346	7	1.27	12937	0.00029	0.92
+GO:0016340	calcium-dependent cell-matrix adhesion	9	2	0.03	14433	0.00047	1.00
+GO:0071103	DNA conformation change	527	8	1.93	12153	0.00073	0.86
+GO:0046548	retinal rod cell development	51	3	0.19	11037	0.00087	0.76
+GO:0032780	negative regulation of ATPase activity	53	3	0.19	3080	0.00098	0.16
+GO:0072385	minus-end-directed organelle transport a...	13	2	0.05	5084	0.00101	0.29
+GO:0055069	zinc ion homeostasis	59	3	0.22	9140	0.00133	0.60
+GO:0007309	oocyte axis specification	131	4	0.48	4985	0.00139	0.28
+GO:0007308	oocyte construction	135	4	0.49	6648	0.00155	0.39
+GO:0007216	G protein-coupled glutamate receptor sig...	63	3	0.23	10297	0.00161	0.69
+GO:0031938	regulation of chromatin silencing at tel...	21	2	0.08	12553	0.00266	0.89
+GO:0010961	cellular magnesium ion homeostasis	22	2	0.08	14352	0.00292	1.00
+GO:0035376	sterol import	23	2	0.08	12543	0.00319	0.89
+GO:0070508	cholesterol import	23	2	0.08	12544	0.00319	0.89
+GO:0000070	mitotic sister chromatid segregation	392	6	1.43	1171	0.00325	0.05
+GO:0036109	alpha-linolenic acid metabolic process	24	2	0.09	11268	0.00347	0.78
+GO:0032490	detection of molecule of bacterial origi...	25	2	0.09	13711	0.00376	0.97
+GO:0034728	nucleosome organization	281	5	1.03	11789	0.00380	0.83
+GO:0042090	interleukin-12 biosynthetic process	29	2	0.11	11455	0.00505	0.80
+GO:0045075	regulation of interleukin-12 biosyntheti...	29	2	0.11	11456	0.00505	0.80
+GO:0043277	apoptotic cell clearance	189	4	0.69	10620	0.00520	0.72
+GO:0097067	cellular response to thyroid hormone sti...	96	3	0.35	7654	0.00532	0.47
+GO:0051295	establishment of meiotic spindle localiz...	30	2	0.11	13256	0.00539	0.94
+GO:0060605	tube lumen cavitation	30	2	0.11	10650	0.00539	0.73
+GO:0060662	salivary gland cavitation	30	2	0.11	10651	0.00539	0.73
+GO:0061647	histone H3-K9 modification	197	4	0.72	4761	0.00601	0.26
