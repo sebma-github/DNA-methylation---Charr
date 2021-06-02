@@ -1,0 +1,52 @@
+GO.ID	Term	Annotated	Significant	Expected	weightedFisher
+GO:0045652	regulation of megakaryocyte differentiat...	174	6	0.76	0.00012
+GO:0045064	T-helper 2 cell differentiation	110	5	0.48	0.00013
+GO:0090197	positive regulation of chemokine secreti...	34	3	0.15	0.00045
+GO:0002830	positive regulation of type 2 immune res...	88	4	0.39	0.00062
+GO:0006636	unsaturated fatty acid biosynthetic proc...	102	4	0.45	0.00082
+GO:2000664	positive regulation of interleukin-5 sec...	10	2	0.04	0.00084
+GO:0019676	ammonia assimilation cycle	11	2	0.05	0.00102
+GO:2000667	positive regulation of interleukin-13 se...	12	2	0.05	0.00122
+GO:0021963	spinothalamic tract morphogenesis	12	2	0.05	0.00122
+GO:0032570	response to progesterone	273	6	1.2	0.00133
+GO:0048538	thymus development	275	6	1.2	0.00138
+GO:0072385	minus-end-directed organelle transport a...	13	2	0.06	0.00144
+GO:0032780	negative regulation of ATPase activity	53	3	0.23	0.00164
+GO:0099557	trans-synaptic signaling by trans-synapt...	14	2	0.06	0.00168
+GO:0106028	neuron projection retraction	14	2	0.06	0.00168
+GO:1900275	negative regulation of phospholipase C a...	14	2	0.06	0.00168
+GO:1904782	negative regulation of NMDA glutamate re...	16	2	0.07	0.00220
+GO:0010742	macrophage derived foam cell differentia...	126	4	0.55	0.00234
+GO:0043392	negative regulation of DNA binding	212	5	0.93	0.00248
+GO:1904783	positive regulation of NMDA glutamate re...	18	2	0.08	0.00279
+GO:0007294	germarium-derived oocyte fate determinat...	19	2	0.08	0.00310
+GO:0007298	border follicle cell migration	72	3	0.32	0.00394
+GO:0071440	regulation of histone H3-K14 acetylation	22	2	0.1	0.00416
+GO:0051389	inactivation of MAPKK activity	23	2	0.1	0.00454
+GO:0050731	positive regulation of peptidyl-tyrosine...	589	8	2.58	0.00455
+GO:0006334	nucleosome assembly	152	4	0.67	0.00458
+GO:0060099	regulation of phagocytosis, engulfment	77	3	0.34	0.00475
+GO:1902723	negative regulation of skeletal muscle s...	24	2	0.11	0.00494
+GO:1902725	negative regulation of satellite cell di...	24	2	0.11	0.00494
+GO:0035011	melanotic encapsulation of foreign targe...	25	2	0.11	0.00535
+GO:0019372	lipoxygenase pathway	25	2	0.11	0.00535
+GO:0008298	intracellular mRNA localization	124	4	0.54	0.00557
+GO:0070345	negative regulation of fat cell prolifer...	26	2	0.11	0.00578
+GO:0047496	vesicle transport along microtubule	165	4	0.72	0.00610
+GO:0050965	detection of temperature stimulus involv...	85	3	0.37	0.00626
+GO:0097066	response to thyroid hormone	188	5	0.82	0.00661
+GO:0030728	ovulation	88	3	0.39	0.00689
+GO:0045075	regulation of interleukin-12 biosyntheti...	29	2	0.13	0.00716
+GO:0051295	establishment of meiotic spindle localiz...	30	2	0.13	0.00765
+GO:0007309	oocyte axis specification	131	5	0.57	0.00773
+GO:0072718	response to cisplatin	31	2	0.14	0.00816
+GO:0072643	interferon-gamma secretion	95	3	0.42	0.00850
+GO:0086046	membrane depolarization during SA node c...	32	2	0.14	0.00868
+GO:0014824	artery smooth muscle contraction	32	2	0.14	0.00868
+GO:0007613	memory	801	9	3.51	0.00893
+GO:0042759	long-chain fatty acid biosynthetic proce...	33	2	0.14	0.00921
+GO:0035360	positive regulation of peroxisome prolif...	33	2	0.14	0.00921
+GO:0042711	maternal behavior	98	3	0.43	0.00925
+GO:0007567	parturition	98	3	0.43	0.00925
+GO:1903727	positive regulation of phospholipid meta...	187	4	0.82	0.00940
+GO:0046628	positive regulation of insulin receptor ...	34	2	0.15	0.00976
