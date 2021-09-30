@@ -1,19 +1,20 @@
-# DNA-methylation---Charr
-Contains all scripts used for papers "DNA methylation in Salvelinus alpinus: Epigenetics to understand polymorphism" 
-and "Methylation reprogramming and early development epigenetic setup in Salmonids" as well as the raw sequencing files.
+# DNA-methylation_Charr
+Contains all scripts used for the paper "DNA methylation differences during development distinguish sympatric morphs of Arctic charr (*Salvelinus alpinus*)".
 
 All R analyses were done under
 Version 1.1.456 – © 2009-2018 RStudio, Inc.
 
-# The workflow for paper 1 can be resumed as follows:
+# The workflow can be resumed as follows:
 # I.1 Assessment of C-T SNPs from fastq files:
-Used 8 whole genome sequences: 2 per morph for both genders. Where are those files ? No idea.
-
-gettingSNPs.sh  
+Used whole genome sequencing data from 8 individuals: 1 male and 1 female for each morph.
+See **gettingSNPs.sh**  
 This script maps the WGS sequencing reads to the genome, changes some formats, filters the reads and selects for C-T SNPs.
 
+The output is: filteredCT.vcf
+
 # II.1 Mask genome with those SNPs
-download Canadian charr genome in fasta format from https://www.ncbi.nlm.nih.gov/assembly/GCF_002910315.2/
+Download Canadian charr genome in fasta format from https://www.ncbi.nlm.nih.gov/assembly/GCF_002910315.2/
+
 "mask genome for SNPs with bedtools maskfasta function" -> add this to script
 "index genome with bismark_genome_preparation"  -> ditto
 
