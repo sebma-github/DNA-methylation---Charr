@@ -1,14 +1,14 @@
-# DNA-methylation_Charr
+### DNA-methylation_Charr
 Contains all scripts used for the paper "DNA methylation differences during development distinguish sympatric morphs of Arctic charr (*Salvelinus alpinus*)".
 
 All R analyses were done under
 Version 1.1.456 – © 2009-2018 RStudio, Inc.
 
-# The workflow can be resumed as follows:
+## The workflow can be resumed as follows:
 # I.1 Assessment of C-T SNPs from fastq files:
-Used whole genome sequencing data from 8 individuals: 1 male and 1 female for each morph. \\
-See **gettingSNPs.sh**  \\
-This script maps the WGS sequencing reads to the genome, changes some formats, filters the reads and selects for C-T SNPs. \\
+Used whole genome sequencing data from 8 individuals: 1 male and 1 female for each morph.   
+See **gettingSNPs.sh**     
+This script maps the WGS sequencing reads to the genome, changes some formats, filters the reads and selects for C-T SNPs. 
 
 The output is: filteredCT.vcf
 
