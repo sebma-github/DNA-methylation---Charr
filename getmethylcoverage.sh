@@ -2,7 +2,7 @@
 
 ##Clean and merge reads from RRBS
 #Trim for base quality
-/programs/bbmap/bbduk.sh in=$read1 in2=$read2 out=R1clean.fq out2=R2clean.fq qtrim=r trimq=10 &&
+/programs/bbmap/bbduk.sh in=~/read1 in2=~/read2 out=R1clean.fq out2=R2clean.fq qtrim=r trimq=10 &&
 
 #Trim for adapter and PhiX sequences
 adapters = ~/adapters.fasta
