@@ -6,9 +6,9 @@ Version 1.1.456 – © 2009-2018 RStudio, Inc.
 
 # The workflow can be resumed as follows:
 # I.1 Assessment of C-T SNPs from fastq files:
-Used whole genome sequencing data from 8 individuals: 1 male and 1 female for each morph.
-See **gettingSNPs.sh**  
-This script maps the WGS sequencing reads to the genome, changes some formats, filters the reads and selects for C-T SNPs.
+Used whole genome sequencing data from 8 individuals: 1 male and 1 female for each morph. \\
+See **gettingSNPs.sh**  \\
+This script maps the WGS sequencing reads to the genome, changes some formats, filters the reads and selects for C-T SNPs. \\
 
 The output is: filteredCT.vcf
 
@@ -19,9 +19,7 @@ Download Canadian charr genome in fasta format from https://www.ncbi.nlm.nih.gov
 "index genome with bismark_genome_preparation"  -> ditto
 
 # II.2 Trim and merge reads from Illumina sequencing and align them to masked genome to get methylation coverage files:
-getmethylcoverage.sh
-/
-need to add files for adapters and PhiX sequences
+See **getmethylcoverage.sh**, use **PhiX.fasta** and **adapters.fasta**.
 
 # II.3 Perform analysis in Rstudio 
 download the annotation in .gff3 from https://www.ncbi.nlm.nih.gov/assembly/GCF_002910315.2/
