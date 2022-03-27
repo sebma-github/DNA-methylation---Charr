@@ -4,7 +4,7 @@ Contains all scripts used for the paper "DNA methylation differences during deve
 All R analyses were done under
 Version 1.1.456 – © 2009-2018 RStudio, Inc.
 
-## The workflow can be resumed as follows:
+## The workflow for methylation assesment can be resumed as follows:
 ## I.1 Assessment of C-T SNPs from fastq files:
 Used whole genome sequencing data from 8 individuals: 1 male and 1 female for each morph.   
      
@@ -40,3 +40,6 @@ Use DMRsbetweenmorphsforextraction.tsv / DMRsbetweenstageforextraction.tsv and D
 
 # III.2 Use those coverage files to create graphs at both residue and DMR level.
 
+R scripts
+
+R scripts
