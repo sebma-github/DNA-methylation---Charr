@@ -2,6 +2,7 @@
 This repository contains all scripts used for the paper "DNA methylation differences during development distinguish sympatric morphs of Arctic charr (*Salvelinus alpinus*)", published in the journal Molecular Ecology.
 
 Analyses involving the MethylKit R package were done under Version 1.1.456 – © 2009-2018 RStudio, Inc.
+
 The rest of the analyses were done under R version 4.1.2 (2021-11-01) -- "Bird Hippie"
 
 Sequencing reads from RRBS are available on ENA with the accession number PRJEB45551.
