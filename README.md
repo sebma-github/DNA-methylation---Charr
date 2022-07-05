@@ -20,6 +20,8 @@ Download Salvelinus sp. genome in fasta format from https://www.ncbi.nlm.nih.gov
 "mask genome for SNPs with bedtools maskfasta function" -> add this to script
 "index genome with bismark_genome_preparation"  -> ditto
 
+see **maskgenomeandindex**
+
 ### I.3 Trim and merge reads from RRBS Illumina sequencing and align them to the masked genome to get methylation coverage files:
 See **getmethylcoverage.sh**, use **PhiX.fasta** and **adapters.fasta**.
 
