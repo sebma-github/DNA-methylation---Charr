@@ -4,13 +4,13 @@ index=~/ASM291031v2.fa
 input=~/fastqreadsfolder/
 output=~/bamfiles/
 
-###Map whole genome sequencing reads to assembly, merge both reads 
+###Map whole genome sequencing reads to assembly, merge both reads, do that for all 8 samples
 bwa mem -t 12 ${index} ${input}S08qual_R1.fastq.gz ${input}S08qual_R2.fastq.gz  > ${output}S08.sam
 
-###Remove unmapped and not properly aligned. Sort the sam. Convert to bam.
+###Remove unmapped and not properly aligned. Sort the sam. Convert to bam, do that for all 8 samples
 samtools view -bS -F 2308 ${output}S08.sam | samtools sort > ${output}S08.bam
 
-###Index the alignments
+###Index the alignments, for all 8 samples
 samtools index ${output}S08.bam
 
 #####################################################################
@@ -21,7 +21,7 @@ output=~/vcffiles/
 
 # the -t gives information on variance.
 
-###convert .bam to .vcf
+###convert .bam to .vcf, for all 8 samples
 samtools mpileup -g -t DP -f ${genome} ${input}S01.bam > ${output}S01.bcf &
 samtools mpileup -g -t DP -f ${genome} ${input}S02.bam > ${output}S02.bcf &
 samtools mpileup -g -t DP -f ${genome} ${input}S03.bam > ${output}S03.bcf &
