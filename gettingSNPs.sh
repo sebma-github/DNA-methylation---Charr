@@ -66,13 +66,12 @@ wait
 bcftools merge -o ${output}merged.vcf -O v ${input}S01.vcf.gz ${input}S02.vcf.gz ${input}S03.vcf.gz ${input}S04.vcf.gz ${input}S05.vcf.gz ${input}S06.vcf.gz ${input}S07.vcf.gz ${input}S08.vcf.gz
 
 
-###Filter VCF file. I can't remember which one I used, but I think it was the raw filter.
-###The logic being that I would rather remove too much than too little.
-##raw filtering
-vcftools --vcf merged.vcf --recode --out rawfilter --remove-filtered-all
+###Filter VCF file. 
+##raw filtering (this basically doesn't do anything, it keeps every SNP. It just removes one column with unneeded data in the file.)
+vcftools --vcf merged.vcf --recode --out filtered --remove-filtered-all
 
-##advanced filtering
-vcftools --vcf ${input}mergedSAL.vcf --remove-filtered-all --max-missing 0.95 --hwe 0.0001 --min-alleles 2 --max-alleles 2 --maf 0.01 --out filtered --recode
+##advanced filtering (this is a real filtering, but in the end I do believe that I didn't do any filtering; the logic being that I would rather mask too many false negative rather than missing false positives)
+# vcftools --vcf ${input}merged.vcf --remove-filtered-all --max-missing 0.95 --hwe 0.0001 --min-alleles 2 --max-alleles 2 --maf 0.01 --out filtered --recode
 
 ####################################################################
 
