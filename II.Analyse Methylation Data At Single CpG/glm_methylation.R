@@ -80,6 +80,8 @@ dfFinal <- glmallresidues()
         dfFinal$Timepoint_pvalue_corrected <- p.adjust(dfFinal$Timepoint_pvalue, method = "bonferroni", n = length(dfFinal$Timepoint_pvalue))
         dfFinal$Sex_pvalue_corrected <- p.adjust(dfFinal$Sex_pvalue, method = "bonferroni", n = length(dfFinal$Sex_pvalue))
         dfFinal$MorphXTimepoint_pvalue_corrected <- p.adjust(dfFinal$MorphXTimepoint_pvalue, method = "bonferroni", n = length(dfFinal$MorphXTimepoint_pvalue))
+# write.csv(dfFinal,"~/glm_10340res_pvalues_withandwithoutBonfcorrection.csv", row.names = FALSE)
+
 
 #Only keep the CpGs with corrected p.value < 0.05
         signifMorph <- filter(dfFinal,Morph_pvalue_corrected <= 0.05)
