@@ -5,8 +5,9 @@ library(ggpubr)
 
 # Comment:
 # There are some discrepancies in the way the gene names are written in this code compared to how they are referred to in the published paper. 
-# ARF16 is a misspelling of the ADP-ribosylation factor-like protein 16 (ARL16).
-# MAGUK or MAGUK2 corresponds to the MAGUK p55 subfamily member 3 which is supposed to be abbreviated MPP3.
+# ARF16 is a misspelling of the "ADP-ribosylation factor-like protein 16" (ARL16).
+# MAGUK or MAGUK2 corresponds to the "MAGUK p55 subfamily member 3" which is supposed to be abbreviated MPP3.
+# Rhogua or Rhoguanin corresponds to ARHGEF37-like.
 
 ####################### Load the qPCR data ##########################
 #Sometimes, one of the technical replicates was bad, so I removed it and replaced the mean by the value of the good technical replicate.
@@ -355,53 +356,46 @@ shapiro.test(REr.Rhoguanin1$`RE_Rhoguanin-1`)$p.value
           lambdaValue <- BoxCox.lambda(REr.SLC9A3R2$RE_SLC9A3R2, method = "guerrero")
           REr.SLC9A3R2$transformed <- BoxCox(REr.SLC9A3R2$RE_SLC9A3R2, lambdaValue)
 
-#Make grahs of the normal distribution of these RErs
-     # HIH2Agraph <- ggplot(REr.HiH2A, aes(sample = transformed)) + stat_qq() + stat_qq_line() + theme_bw() + 
-     #   labs(x="Theoretical Quantiles", y= "Sample Quantiles") + ggtitle("H2A-like REr")
-     # LMTK2graph <- ggplot(REr.Lmtk2, aes(sample = transformed)) + stat_qq() + stat_qq_line() + theme_bw() + 
-     #   labs(x="Theoretical Quantiles", y= "Sample Quantiles") + ggtitle("LMTK2 REr")
-     # SLC9A3R2graph <- ggplot(REr.SLC9A3R2, aes(sample = transformed)) + stat_qq() + stat_qq_line() + theme_bw() + 
-     #   labs(x="Theoretical Quantiles", y= "Sample Quantiles") + ggtitle("SLC9A3R2-like REr")
-    # NKX23graph <- ggplot(b3_bis, aes(sample = `RE_Nkx23-2`)) + stat_qq() + stat_qq_line() + theme_bw() + 
-    #   labs(x="Theoretical Quantiles", y= "Sample Quantiles") + ggtitle("NKX23-like REr")
-     # NFIXgraph <- ggplot(REr.NFiX1, aes(sample = transformed)) + stat_qq() + stat_qq_line() + theme_bw() + 
-     #   labs(x="Theoretical Quantiles", y= "Sample Quantiles") + ggtitle("NFIX REr")
-    # RASSF4graph <- ggplot(b4_bis, aes(sample = `RE_RASSF4-2`)) + stat_qq() + stat_qq_line() + theme_bw() + 
-    #   labs(x="Theoretical Quantiles", y= "Sample Quantiles") + ggtitle("RASSF4-like REr")
-    # Meisgraph <- ggplot(b5_bis, aes(sample = `RE_MEiS1l-2`)) + stat_qq() + stat_qq_line() + theme_bw() + 
-    #   labs(x="Theoretical Quantiles", y= "Sample Quantiles") + ggtitle("MEIS1-like REr")
-     # ARL16graph <- ggplot(REr.ARF161, aes(sample = transformed)) + stat_qq() + stat_qq_line() + theme_bw() + 
-     #   labs(x="Theoretical Quantiles", y= "Sample Quantiles") + ggtitle("ARL16 REr")
-    # ARMC1graph <- ggplot(b6_bis, aes(sample = `RE_ARMC1-1`)) + stat_qq() + stat_qq_line() + theme_bw() + 
-    #   labs(x="Theoretical Quantiles", y= "Sample Quantiles") + ggtitle("ARMC1 REr")
-    # H3graph <- ggplot(b6_bis, aes(sample = `RE_HiH3l-2`)) + stat_qq() + stat_qq_line() + theme_bw() + 
-    #   labs(x="Theoretical Quantiles", y= "Sample Quantiles") + ggtitle("H3-like REr")
-    # GLI3graph <- ggplot(b7_bis, aes(sample = `RE_GLi3-1`)) + stat_qq() + stat_qq_line() + theme_bw() + 
-    #   labs(x="Theoretical Quantiles", y= "Sample Quantiles") + ggtitle("GLI3-like REr")
-    # MEGF9graph <- ggplot(b7_bis, aes(sample = `RE_MEGF9-1`)) + stat_qq() + stat_qq_line() + theme_bw() + 
-    #   labs(x="Theoretical Quantiles", y= "Sample Quantiles") + ggtitle("MEGF9-like REr")
-    # Rhoguagraph <- ggplot(b8_bis, aes(sample = `RE_Rhoguanin-1`)) + stat_qq() + stat_qq_line() + theme_bw() + 
-    #   labs(x="Theoretical Quantiles", y= "Sample Quantiles") + ggtitle("ARHGEF37-like REr")
-     # MPP3graph <- ggplot(REr.MAGUK2, aes(sample = transformed)) + stat_qq() + stat_qq_line() + theme_bw() + 
-     #   labs(x="Theoretical Quantiles", y= "Sample Quantiles") + ggtitle("MPP3 REr")
-    # 
-    # 
-     # figure <- ggarrange(LMTK2graph,SLC9A3R2graph,NFIXgraph,ARL16graph,HIH2Agraph,MPP3graph, ncol=3, nrow=2)
-    # figure <- ggarrange(LMTK2graph,ARMC1graph,SLC9A3R2graph,NKX23graph,NFIXgraph,RASSF4graph,ARL16graph,Meisgraph,H3graph,
-    #                     HIH2Agraph,GLI3graph,MEGF9graph,MPP3graph,Rhoguagraph, ncol=3, nrow=5)
-    # 
-     # pdf("/Users/sebmatlosz/Desktop/AllFilesForSubmission/qqNorm_RER_posttransformation_210222.pdf", 10,6)
-     # figure
-     # dev.off()
+#Make qqplots for these relative expression ratios (RErs)
+      HIH2Agraph <- ggplot(REr.HiH2A, aes(sample = transformed)) + stat_qq() + stat_qq_line() + theme_bw() + 
+        labs(x="Theoretical Quantiles", y= "Sample Quantiles") + ggtitle("H2A-like REr")
+      LMTK2graph <- ggplot(REr.Lmtk2, aes(sample = transformed)) + stat_qq() + stat_qq_line() + theme_bw() + 
+        labs(x="Theoretical Quantiles", y= "Sample Quantiles") + ggtitle("LMTK2 REr")
+      SLC9A3R2graph <- ggplot(REr.SLC9A3R2, aes(sample = transformed)) + stat_qq() + stat_qq_line() + theme_bw() + 
+        labs(x="Theoretical Quantiles", y= "Sample Quantiles") + ggtitle("SLC9A3R2-like REr")
+     NKX23graph <- ggplot(b3_bis, aes(sample = `RE_Nkx23-2`)) + stat_qq() + stat_qq_line() + theme_bw() + 
+      labs(x="Theoretical Quantiles", y= "Sample Quantiles") + ggtitle("NKX23-like REr")
+      NFIXgraph <- ggplot(REr.NFiX1, aes(sample = transformed)) + stat_qq() + stat_qq_line() + theme_bw() + 
+        labs(x="Theoretical Quantiles", y= "Sample Quantiles") + ggtitle("NFIX REr")
+     RASSF4graph <- ggplot(b4_bis, aes(sample = `RE_RASSF4-2`)) + stat_qq() + stat_qq_line() + theme_bw() + 
+       labs(x="Theoretical Quantiles", y= "Sample Quantiles") + ggtitle("RASSF4-like REr")
+     Meisgraph <- ggplot(b5_bis, aes(sample = `RE_MEiS1l-2`)) + stat_qq() + stat_qq_line() + theme_bw() + 
+       labs(x="Theoretical Quantiles", y= "Sample Quantiles") + ggtitle("MEIS1-like REr")
+      ARL16graph <- ggplot(REr.ARF161, aes(sample = transformed)) + stat_qq() + stat_qq_line() + theme_bw() + 
+        labs(x="Theoretical Quantiles", y= "Sample Quantiles") + ggtitle("ARL16 REr")
+     ARMC1graph <- ggplot(b6_bis, aes(sample = `RE_ARMC1-1`)) + stat_qq() + stat_qq_line() + theme_bw() + 
+       labs(x="Theoretical Quantiles", y= "Sample Quantiles") + ggtitle("ARMC1 REr")
+     H3graph <- ggplot(b6_bis, aes(sample = `RE_HiH3l-2`)) + stat_qq() + stat_qq_line() + theme_bw() + 
+       labs(x="Theoretical Quantiles", y= "Sample Quantiles") + ggtitle("H3-like REr")
+     GLI3graph <- ggplot(b7_bis, aes(sample = `RE_GLi3-1`)) + stat_qq() + stat_qq_line() + theme_bw() + 
+       labs(x="Theoretical Quantiles", y= "Sample Quantiles") + ggtitle("GLI3-like REr")
+     MEGF9graph <- ggplot(b7_bis, aes(sample = `RE_MEGF9-1`)) + stat_qq() + stat_qq_line() + theme_bw() + 
+       labs(x="Theoretical Quantiles", y= "Sample Quantiles") + ggtitle("MEGF9-like REr")
+     Rhoguagraph <- ggplot(b8_bis, aes(sample = `RE_Rhoguanin-1`)) + stat_qq() + stat_qq_line() + theme_bw() + 
+       labs(x="Theoretical Quantiles", y= "Sample Quantiles") + ggtitle("ARHGEF37-like REr")
+      MPP3graph <- ggplot(REr.MAGUK2, aes(sample = transformed)) + stat_qq() + stat_qq_line() + theme_bw() + 
+        labs(x="Theoretical Quantiles", y= "Sample Quantiles") + ggtitle("MPP3 REr")
 
 
-
-
-
-
+ figure <- ggarrange(LMTK2graph,ARMC1graph,SLC9A3R2graph,NKX23graph,NFIXgraph,RASSF4graph,ARL16graph,Meisgraph,H3graph,
+                        HIH2Agraph,GLI3graph,MEGF9graph,MPP3graph,Rhoguagraph, ncol=3, nrow=5)
+   
+ pdf("~/qqNorm_RER_posttransformation.pdf", 10,6)
+ figure
+ dev.off()
 
 ################################################################
-#Plot these relative expression ratios.
+#Plot the relative expression ratios.
 color <- c("#00BA38FF","#619CFFFF","#F8766DFF","darkmagenta")
 names(color) <- c("LB","SB","PL","PI")
 
@@ -501,11 +495,9 @@ bar.Rhoguanin1 <- removelegend(bar.Rhoguanin)
 
 figure <- ggarrange(bar.Lmtk2,bar.ARMC11,bar.SLC9A3R2,bar.Nkx232,bar.NFiX1,bar.RASSF42,bar.ARL161,bar.MEiS1l2,bar.HiH3l2,bar.HiH2A,
                     bar.GLi31,bar.MEGF91,bar.MAGUK2,bar.Rhoguanin1, leg, ncol=3,nrow=5)
-
 figure
 
-
-pdf("/Users/sebmatlosz/Desktop/AllFilesForSubmission/qPCR_EffNorm_190122.pdf", 10,15)
+pdf("~/qPCR_EffNorm.pdf", 10,15)
 figure
 dev.off()
 
