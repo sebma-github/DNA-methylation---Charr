@@ -88,10 +88,10 @@ dfFinal <- glmallresidues()
         signifMorphXTime <- filter(v,MorphXTimepoint_pvalue_corrected <= 0.05)
 
         
-# write.csv(signifMorph,"/Users/sebmatlosz/Desktop/methylation/glm_signif_Morphs_090222.csv", row.names = FALSE)
-# write.csv(signifTime,"/Users/sebmatlosz/Desktop/methylation/glm_signif_Timepoints_090222.csv", row.names = FALSE)
-# write.csv(signifSex,"/Users/sebmatlosz/Desktop/methylation/glm_signif_Sex_090222.csv", row.names = FALSE)
-# write.csv(signifMorphXTime,"/Users/sebmatlosz/Desktop/methylation/glm_signif_MorphXTime_090222.csv", row.names = FALSE)
+# write.csv(signifMorph,"~/glm_signif_Morphs.csv", row.names = FALSE)
+# write.csv(signifTime,"~/glm_signif_Timepoints.csv", row.names = FALSE)
+# write.csv(signifSex,"~/glm_signif_Sex.csv", row.names = FALSE)
+# write.csv(signifMorphXTime,"~/glm_signif_MorphXTime.csv", row.names = FALSE)
         
 
 
