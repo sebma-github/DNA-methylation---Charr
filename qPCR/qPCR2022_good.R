@@ -1,10 +1,16 @@
 library(dplyr)
 library(reshape2)
 library(ggplot2)
-          
+library(ggpubr)
+
+# Comment:
+# There are some discrepancies in the way the gene names are written in this code compared to how they are referred to in the published paper. 
+# ARF16 is a misspelling of the ADP-ribosylation factor-like protein 16 (ARL16).
+# MAGUK or MAGUK2 corresponds to the MAGUK p55 subfamily member 3 which is supposed to be abbreviated MPP3.
+
 ####################### Load the qPCR data ##########################
-#Sometimes, one ofthe technical replicates was bad, so I removed it here and replaced the mean by the value of the good technical replicate.
-#I could have done it directly in Excel, but I just did it here.
+#Sometimes, one of the technical replicates was bad, so I removed it and replaced the mean by the value of the good technical replicate.
+#I could have done it directly in Excel, but I just did it here so it is easier to track what has been done.
 
 # t100 - Lmtk2 & HiH2A
 b1.100 <- read.csv("~/Plate8_100_Lmtk2HiH2a.csv",header=TRUE)
@@ -233,38 +239,32 @@ b8.200a <- tafla(b8.200,s200,timepoint200)
 
 #################### Specifically make recaps so that it is easier to use #############################
 #do not bother with the $Reference column. It will not be used later in the script.
-b1 <- rbind(b1.100a, b1.150a, b1.200a)
+          b1 <- rbind(b1.100a, b1.150a, b1.200a)
 
 #Need to tweak things a bit for b2
 # First, we don't need b2.200Myel. 
 # Then we need b2.200SLC, but the column names are different, so I need to change that.
 # This is scuffed but I will change the title of the ZFP2 column into "MyelTF1" so that rbind works. I am not using this ZFP2/MyelTF1 data anyway.
-colnames(b2.200SLCa) <- c("Sample","actb","SLC9A3R2","Ub2l3","MyelTF1","Reference", "Morph","Timepoint")
-b2 <- rbind(b2.100a, b2.150a, b2.200SLCa)
+          colnames(b2.200SLCa) <- c("Sample","actb","SLC9A3R2","Ub2l3","MyelTF1","Reference", "Morph","Timepoint")
+          b2 <- rbind(b2.100a, b2.150a, b2.200SLCa)
 
-b3 <- rbind(b3.100a, b3.150a, b3.200a)
-b4 <- rbind(b4.100a, b4.150a, b4.200a)
-b5 <- rbind(b5.100a, b5.150a, b5.200a)
-b6 <- rbind(b6.100a, b6.150a, b6.200a)
-b7 <- rbind(b7.100a, b7.150a, b7.200a)
-b8 <- rbind(b8.100a, b8.150a, b8.200a)
+          b3 <- rbind(b3.100a, b3.150a, b3.200a)
+          b4 <- rbind(b4.100a, b4.150a, b4.200a)
+          b5 <- rbind(b5.100a, b5.150a, b5.200a)
+          b6 <- rbind(b6.100a, b6.150a, b6.200a)
+          b7 <- rbind(b7.100a, b7.150a, b7.200a)
+          b8 <- rbind(b8.100a, b8.150a, b8.200a)
 
 
 ###################################################################################################
 #Here, I use the model from Hendelmans et al., which is derived from the Pfaffl equation to use multiple ref genes:
-
-        # b1.100a <- readRDS("/Users/sebmatlosz/Desktop/b1_100a.rds")
-        # b1.150a <- readRDS("/Users/sebmatlosz/Desktop/b1_150a.rds")
-        # b1.200a <- readRDS("/Users/sebmatlosz/Desktop/b1_200a.rds")
-        # 
-        # b1 <- rbind(b1.100a, b1.150a, b1.200a)
 
 #First, calculate deltaCt (control - samples). For both of the reference genes and the goi.
 #Let's start by choosing one of the PI100 as a control. We can decide later whether we want it to be a specific one or not.
 #Nevermind, even better, take the average mean of all values. Wait but then I would need to take the averages for each gene so it is somehow unrelated?
 
 
-#Here, x is the data frame, Eff1 is the Efficiency of the first gene, Eff2 the efficiency of the second gene
+#Here, x is the data frame, Eff1 is the Efficiency of the first primer pair (= the first gene), and Eff2 the efficiency of the second primer pair
 CalculateREr <- function(x,Eff1,Eff2) {
 
     #Keep gene names in variable.
@@ -285,6 +285,7 @@ CalculateREr <- function(x,Eff1,Eff2) {
 
 
     #Calculate relative quantity values for each gene. RQ=E^deltaCt
+    #Efficiency of primers for the genes of reference
     Effactb <- 1.95
     EffUb2l3 <- 1.93
     
@@ -305,8 +306,8 @@ return(x)
 
 
 b1_bis <- CalculateREr(b1,1.99,1.9) #HiH2A, Lmtk2
-b2_bis <- CalculateREr(b2,2.0,1.95) #The first one doesn't matter, it is MyelTF1, then SLC9A3R2
-b3_bis <- CalculateREr(b3,2.0,1.93)   #The first one doesn't matter, it is Ets2, then Nkx23
+b2_bis <- CalculateREr(b2,2.0,1.95) #The first primer efficiency doesn't matter, as it is for MyelTF1 which we don't use. The second one is for SLC9A3R2
+b3_bis <- CalculateREr(b3,2.0,1.93)   #The first primer efficiency doesn't matter, as it is for Ets2 which we don't use. The second one is for Nkx23
 b4_bis <- CalculateREr(b4,2.17,2.21) #NFIX, RASSF4
 b5_bis <- CalculateREr(b5,2.49,2.2) #ARL16, Meis
 b6_bis <- CalculateREr(b6,1.92,2.17) #ARMC1, HiH3l
@@ -314,68 +315,45 @@ b7_bis <- CalculateREr(b7,2.06,1.95) #Gli3, MEGF9
 b8_bis <- CalculateREr(b8,2.02,1.92) #MAGUK, Rhoguanin
 
 #Make recaps out of these tables for each gene.
-REr.Lmtk2 <- b1_bis[,-c(3,11,15,18)]
-REr.HiH2A <- b1_bis[,-c(4,12,16,19)]
-REr.SLC9A3R2 <- b2_bis[,-c(3,11,15,18)]
-REr.Nkx232 <- b3_bis[,-c(3,11,15,18)]
-REr.NFiX1 <- b4_bis[,-c(4,12,16,19)]
-REr.RASSF42 <- b4_bis[,-c(3,11,15,18)]
-REr.ARF161 <- b5_bis[,-c(4,12,16,19)]
-REr.MEiS1l2 <- b5_bis[,-c(3,11,15,18)]
-REr.HiH3l2 <- b6_bis[,-c(3,11,15,18)]
-REr.ARMC11 <- b6_bis[,-c(4,12,16,19)]
-REr.GLi31 <- b7_bis[,-c(4,12,16,19)]
-REr.MEGF91 <- b7_bis[,-c(3,11,15,18)]
-REr.MAGUK2 <- b8_bis[,-c(4,12,16,19)]
-REr.Rhoguanin1 <- b8_bis[,-c(3,11,15,18)]
+          REr.Lmtk2 <- b1_bis[,-c(3,11,15,18)]
+          REr.HiH2A <- b1_bis[,-c(4,12,16,19)]
+          REr.SLC9A3R2 <- b2_bis[,-c(3,11,15,18)]
+          REr.Nkx232 <- b3_bis[,-c(3,11,15,18)]
+          REr.NFiX1 <- b4_bis[,-c(4,12,16,19)]
+          REr.RASSF42 <- b4_bis[,-c(3,11,15,18)]
+          REr.ARF161 <- b5_bis[,-c(4,12,16,19)]
+          REr.MEiS1l2 <- b5_bis[,-c(3,11,15,18)]
+          REr.HiH3l2 <- b6_bis[,-c(3,11,15,18)]
+          REr.ARMC11 <- b6_bis[,-c(4,12,16,19)]
+          REr.GLi31 <- b7_bis[,-c(4,12,16,19)]
+          REr.MEGF91 <- b7_bis[,-c(3,11,15,18)]
+          REr.MAGUK2 <- b8_bis[,-c(4,12,16,19)]
+          REr.Rhoguanin1 <- b8_bis[,-c(3,11,15,18)]
 
-### Just load the data if I want to skip everything ###
 
-REr.Lmtk2 <- readRDS("/Users/sebmatlosz/Desktop/qPCR_dCtobjects/primerEffNorm/REr_Lmtk2.rds")
-REr.HiH2A <- readRDS( "/Users/sebmatlosz/Desktop/qPCR_dCtobjects/primerEffNorm/REr_HiH2A.rds")
-REr.SLC9A3R2 <- readRDS( "/Users/sebmatlosz/Desktop/qPCR_dCtobjects/primerEffNorm/REr_SLC9A3R2.rds")
-REr.Nkx232 <- readRDS( "/Users/sebmatlosz/Desktop/qPCR_dCtobjects/primerEffNorm/REr_Nkx23.rds")
-REr.NFiX1 <- readRDS( "/Users/sebmatlosz/Desktop/qPCR_dCtobjects/primerEffNorm/REr_NFIX.rds")
-REr.RASSF42 <- readRDS( "/Users/sebmatlosz/Desktop/qPCR_dCtobjects/primerEffNorm/REr_RASSF4.rds")
-REr.ARF161 <- readRDS( "/Users/sebmatlosz/Desktop/qPCR_dCtobjects/primerEffNorm/REr_ARL16.rds")
-REr.MEiS1l2 <- readRDS( "/Users/sebmatlosz/Desktop/qPCR_dCtobjects/primerEffNorm/REr_MEIS1.rds")
-REr.HiH3l2 <- readRDS( "/Users/sebmatlosz/Desktop/qPCR_dCtobjects/primerEffNorm/REr_H3-like.rds")
-REr.ARMC11 <- readRDS( "/Users/sebmatlosz/Desktop/qPCR_dCtobjects/primerEffNorm/REr_ARMC1.rds")
-REr.GLi31 <- readRDS( "/Users/sebmatlosz/Desktop/qPCR_dCtobjects/primerEffNorm/REr_Gli3.rds")
-REr.MEGF91 <- readRDS( "/Users/sebmatlosz/Desktop/qPCR_dCtobjects/primerEffNorm/REr_MEGF9.rds")
-REr.MAGUK2 <- readRDS( "/Users/sebmatlosz/Desktop/qPCR_dCtobjects/primerEffNorm/REr_MAGUK2.rds")
-REr.Rhoguanin1 <- readRDS( "/Users/sebmatlosz/Desktop/qPCR_dCtobjects/primerEffNorm/REr_Rhoguanin.rds")
-
-#### Check normality with Shapiro
-library(dplyr)
-library(ggpubr)
-
+#### Check normality with Shapiro for each gene
+# example:
 shapiro.test(REr.Rhoguanin1$`RE_Rhoguanin-1`)$p.value
+# ==> ARL16, H2A-like, LMTK2, MPP3, NFIX and SLC9A3R2 were not normal
 
-#Transform the ones that are not normal.
-lambdaValue <- BoxCox.lambda(REr.ARF161$`RE_ARF16-1`, method = "guerrero")
-REr.ARF161$transformed <- BoxCox(REr.ARF161$`RE_ARF16-1`, lambdaValue)
+#Transform data for the non-normal genes.
+          lambdaValue <- BoxCox.lambda(REr.ARF161$`RE_ARF16-1`, method = "guerrero")
+          REr.ARF161$transformed <- BoxCox(REr.ARF161$`RE_ARF16-1`, lambdaValue)
 
-lambdaValue <- BoxCox.lambda(REr.HiH2A$RE_HiH2A, method = "guerrero")
-REr.HiH2A$transformed <- BoxCox(REr.HiH2A$RE_HiH2A, lambdaValue)
+          lambdaValue <- BoxCox.lambda(REr.HiH2A$RE_HiH2A, method = "guerrero")
+          REr.HiH2A$transformed <- BoxCox(REr.HiH2A$RE_HiH2A, lambdaValue)
 
-lambdaValue <- BoxCox.lambda(REr.Lmtk2$RE_Lmtk2, method = "guerrero")
-REr.Lmtk2$transformed <- BoxCox(REr.Lmtk2$RE_Lmtk2, lambdaValue)
+          lambdaValue <- BoxCox.lambda(REr.Lmtk2$RE_Lmtk2, method = "guerrero")
+          REr.Lmtk2$transformed <- BoxCox(REr.Lmtk2$RE_Lmtk2, lambdaValue)
 
-lambdaValue <- BoxCox.lambda(REr.MAGUK2$`RE_MAGUK-2`, method = "guerrero")
-REr.MAGUK2$transformed <- BoxCox(REr.MAGUK2$`RE_MAGUK-2`, lambdaValue)
+          lambdaValue <- BoxCox.lambda(REr.MAGUK2$`RE_MAGUK-2`, method = "guerrero")
+          REr.MAGUK2$transformed <- BoxCox(REr.MAGUK2$`RE_MAGUK-2`, lambdaValue)
 
-lambdaValue <- BoxCox.lambda(REr.NFiX1$`RE_NFiX-1`, method = "guerrero")
-REr.NFiX1$transformed <- BoxCox(REr.NFiX1$`RE_NFiX-1`, lambdaValue)
+          lambdaValue <- BoxCox.lambda(REr.NFiX1$`RE_NFiX-1`, method = "guerrero")
+          REr.NFiX1$transformed <- BoxCox(REr.NFiX1$`RE_NFiX-1`, lambdaValue)
 
-lambdaValue <- BoxCox.lambda(REr.SLC9A3R2$RE_SLC9A3R2, method = "guerrero")
-REr.SLC9A3R2$transformed <- BoxCox(REr.SLC9A3R2$RE_SLC9A3R2, lambdaValue)
-
-shapiro.test(REr.ARF161$`RE_ARF16-1`)$p.value
-
-
-
-
+          lambdaValue <- BoxCox.lambda(REr.SLC9A3R2$RE_SLC9A3R2, method = "guerrero")
+          REr.SLC9A3R2$transformed <- BoxCox(REr.SLC9A3R2$RE_SLC9A3R2, lambdaValue)
 
 #Make grahs of the normal distribution of these RErs
      # HIH2Agraph <- ggplot(REr.HiH2A, aes(sample = transformed)) + stat_qq() + stat_qq_line() + theme_bw() + 
@@ -415,65 +393,6 @@ shapiro.test(REr.ARF161$`RE_ARF16-1`)$p.value
      # pdf("/Users/sebmatlosz/Desktop/AllFilesForSubmission/qqNorm_RER_posttransformation_210222.pdf", 10,6)
      # figure
      # dev.off()
-
-      #Since I am at it, check the normality of dCt and ddCt data as well?
-        # ddCt.Lmtk2 <- readRDS("/Users/sebmatlosz/Desktop/qPCR_dCtobjects/noNorm/ddCt-Lmtk2.rds")
-        # ddCt.HiH2A <- readRDS("/Users/sebmatlosz/Desktop/qPCR_dCtobjects/noNorm/ddCt-HiH2A.rds")
-        # ddCt.SLC9A3R2 <- readRDS("/Users/sebmatlosz/Desktop/qPCR_dCtobjects/noNorm/ddCt-SLC9A3R2.rds")
-        # ddCt.Nkx232 <- readRDS("/Users/sebmatlosz/Desktop/qPCR_dCtobjects/noNorm/ddCt-Nkx232.rds")
-        # ddCt.NFiX1 <- readRDS("/Users/sebmatlosz/Desktop/qPCR_dCtobjects/noNorm/ddCt-NFiX1.rds")
-        # ddCt.RASSF42 <- readRDS("/Users/sebmatlosz/Desktop/qPCR_dCtobjects/noNorm/ddCt-RASSF42.rds")
-        # ddCt.ARF161 <- readRDS("/Users/sebmatlosz/Desktop/qPCR_dCtobjects/noNorm/ddCt-ARF161.rds")
-        # ddCt.MEiS1l2 <- readRDS("/Users/sebmatlosz/Desktop/qPCR_dCtobjects/noNorm/ddCt-MEiS1l2.rds")
-        # ddCt.HiH3l2 <- readRDS("/Users/sebmatlosz/Desktop/qPCR_dCtobjects/noNorm/ddCt-HiH3l2.rds")
-        # ddCt.ARMC11 <- readRDS("/Users/sebmatlosz/Desktop/qPCR_dCtobjects/noNorm/ddCt-ARMC11.rds")
-        # ddCt.GLi31 <- readRDS("/Users/sebmatlosz/Desktop/qPCR_dCtobjects/noNorm/ddCt-GLi31.rds")
-        # ddCt.MEGF91 <- readRDS("/Users/sebmatlosz/Desktop/qPCR_dCtobjects/noNorm/ddCt-MEGF91.rds")
-        # ddCt.MAGUK2 <- readRDS("/Users/sebmatlosz/Desktop/qPCR_dCtobjects/noNorm/ddCt-MAGUK2.rds")
-        # ddCt.Rhoguanin1 <- readRDS("/Users/sebmatlosz/Desktop/qPCR_dCtobjects/noNorm/ddCt-Rhoguanin1.rds")
-        # 
-        # #Check for normality with shapiro:
-        # shapiro.test(ddCt.Rhoguanin1$ddCt)$p.value
-
-        # 
-        # #Change aes(sample = dCt) to aes(sample = ddCt)  
-        # HIH2Agraph <- ggplot(ddCt.HiH2A, aes(sample = ddCt)) + stat_qq() + stat_qq_line() + theme_bw() + 
-        #   labs(x="Theoretical Quantiles", y= "Sample Quantiles") + ggtitle("H2A-like ddCt")
-        # LMTK2graph <- ggplot(ddCt.Lmtk2, aes(sample = ddCt)) + stat_qq() + stat_qq_line() + theme_bw() +
-        #   labs(x="Theoretical Quantiles", y= "Sample Quantiles") + ggtitle("LMTK2 ddCt")
-        # SLC9A3R2graph <- ggplot(ddCt.SLC9A3R2, aes(sample = ddCt)) + stat_qq() + stat_qq_line() + theme_bw() +
-        #   labs(x="Theoretical Quantiles", y= "Sample Quantiles") + ggtitle("SLC9A3R2-like ddCt")
-        # NKX23graph <- ggplot(ddCt.Nkx232, aes(sample = ddCt)) + stat_qq() + stat_qq_line() + theme_bw() +
-        #   labs(x="Theoretical Quantiles", y= "Sample Quantiles") + ggtitle("NKX23-like ddCt")
-        # NFIXgraph <- ggplot(ddCt.NFiX1, aes(sample = ddCt)) + stat_qq() + stat_qq_line() + theme_bw() +
-        #   labs(x="Theoretical Quantiles", y= "Sample Quantiles") + ggtitle("NFIX ddCt")
-        # RASSF4graph <- ggplot(ddCt.RASSF42, aes(sample = ddCt)) + stat_qq() + stat_qq_line() + theme_bw() +
-        #   labs(x="Theoretical Quantiles", y= "Sample Quantiles") + ggtitle("RASSF4-like ddCt")
-        # Meisgraph <- ggplot(ddCt.MEiS1l2, aes(sample = ddCt)) + stat_qq() + stat_qq_line() + theme_bw() +
-        #   labs(x="Theoretical Quantiles", y= "Sample Quantiles") + ggtitle("MEIS1-like ddCt")
-        # ARL16graph <- ggplot(ddCt.ARF161, aes(sample = ddCt)) + stat_qq() + stat_qq_line() + theme_bw() +
-        #   labs(x="Theoretical Quantiles", y= "Sample Quantiles") + ggtitle("ARL16 ddCt")
-        # ARMC1graph <- ggplot(ddCt.ARMC11, aes(sample = ddCt)) + stat_qq() + stat_qq_line() + theme_bw() +
-        #   labs(x="Theoretical Quantiles", y= "Sample Quantiles") + ggtitle("ARMC1 ddCt")
-        # H3graph <- ggplot(ddCt.HiH3l2, aes(sample = ddCt)) + stat_qq() + stat_qq_line() + theme_bw() +
-        #   labs(x="Theoretical Quantiles", y= "Sample Quantiles") + ggtitle("H3-like ddCt")
-        # GLI3graph <- ggplot(ddCt.GLi31, aes(sample = ddCt)) + stat_qq() + stat_qq_line() + theme_bw() +
-        #   labs(x="Theoretical Quantiles", y= "Sample Quantiles") + ggtitle("GLI3-like ddCt")
-        # MEGF9graph <- ggplot(ddCt.MEGF91, aes(sample = ddCt)) + stat_qq() + stat_qq_line() + theme_bw() +
-        #   labs(x="Theoretical Quantiles", y= "Sample Quantiles") + ggtitle("MEGF9-like ddCt")
-        # Rhoguagraph <- ggplot(ddCt.Rhoguanin1, aes(sample = ddCt)) + stat_qq() + stat_qq_line() + theme_bw() +
-        #   labs(x="Theoretical Quantiles", y= "Sample Quantiles") + ggtitle("ARHGEF37-like ddCt")
-        # MPP3graph <- ggplot(ddCt.MAGUK2, aes(sample = ddCt)) + stat_qq() + stat_qq_line() + theme_bw() +
-        #   labs(x="Theoretical Quantiles", y= "Sample Quantiles") + ggtitle("MPP3 ddCt")
-        # 
-        # 
-        # figure <- ggarrange(LMTK2graph,ARMC1graph,SLC9A3R2graph,NKX23graph,NFIXgraph,RASSF4graph,ARL16graph,Meisgraph,H3graph,
-        #                     HIH2Agraph,GLI3graph,MEGF9graph,MPP3graph,Rhoguagraph, ncol=3, nrow=5)
-        # 
-        # pdf("/Users/sebmatlosz/Desktop/AllFilesForSubmission/qqNorm_ddCt_160222.pdf", 10,15)
-        # figure
-        # dev.off()
-
 
 
 
@@ -590,8 +509,3 @@ pdf("/Users/sebmatlosz/Desktop/AllFilesForSubmission/qPCR_EffNorm_190122.pdf", 1
 figure
 dev.off()
 
-
-############################################################################################
-#Pfaffl equation  (OLD)
-# b1[,paste("RE_",gene1,sep="")] <- ((Eff1 ^ b1$delta_HiH2A)/(EffRef ^ b1$delta_ref))
-# b1[,paste("RE_",gene2,sep="")] <- ((Eff2 ^ b1$delta_Lmtk2)/(EffRef ^ b1$delta_ref))
