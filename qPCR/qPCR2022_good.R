@@ -1,122 +1,45 @@
-#If you want to play with the code
 library(dplyr)
 library(reshape2)
 library(ggplot2)
-          # #Here is an example of the data.
-          # #The geometric mean between the two reference genes has already been calculated.
-          # b1.100a <- readRDS("/Users/sebmatlosz/Desktop/b1_100a.rds")
-          # b1.150a <- readRDS("/Users/sebmatlosz/Desktop/b1_150a.rds")
-          # b1.200a <- readRDS("/Users/sebmatlosz/Desktop/b1_200a.rds")
-          # 
-          # #Calculate delta Ct (goi - reference)
-          # dCt100200 <- function(t,s1,s2) {
-          #   # dCt
-          #   t[[paste("dCt",s1,sep="")]] <- t[[paste(s1,"",sep="")]] - t$Reference
-          #   t[[paste("dCt",s2,sep="")]] <- t[[paste(s2,"",sep="")]] - t$Reference
-          #   
-          #   return(t)
-          # }
-          # 
-          # b1.100b <- dCt100200(b1.100a,"Lmtk2","HiH2A")
-          # b1.150b <- dCt100200(b1.150a,"Lmtk2","HiH2A")
-          # b1.200b <- dCt100200(b1.200a,"Lmtk2","HiH2A")
-          # 
-          # #Union of tables for uniq genes
-          # genetable3 <- function(t100,t150,t200,s){
-          #   # Samples
-          #   sample100 <- as.vector(t100$Sample)
-          #   sample150 <- as.vector(t150$Sample)
-          #   sample200 <- as.vector(t200$Sample)
-          #   samples <- c(sample100, sample150, sample200)
-          #   # Timepoints
-          #   time100 <- as.vector(t100$Timepoint)
-          #   time150 <- as.vector(t150$Timepoint)
-          #   time200 <- as.vector(t200$Timepoint)
-          #   times <- c(time100, time150, time200)
-          #   # Morphs
-          #   morph100 <- as.vector(t100$Morph)
-          #   morph150 <- as.vector(t150$Morph)
-          #   morph200 <- as.vector(t200$Morph)
-          #   morphs <- c(morph100, morph150, morph200)
-          #   
-          #   # dCt values for certain gene
-          #   gene100 <- as.vector(t100[[paste("dCt",s,sep="")]])
-          #   gene150 <- as.vector(t150[[paste("dCt",s,sep="")]])
-          #   gene200 <- as.vector(t200[[paste("dCt",s,sep="")]])
-          #   
-          #   dCt <- c(gene100,gene150,gene200)
-          #   
-          #   if(length(dCt)==length(morphs) && 
-          #      length(dCt)==length(times) && 
-          #      length(dCt)==length(samples)){
-          #     t <- data.frame(samples,times,morphs,dCt)
-          #     return(t)
-          #   }
-          #   else{
-          #     return("error")
-          #   }
-          # }
-          # 
-          # dCt.Lmtk2 <- genetable3(b1.100b,b1.150b,b1.200b,"Lmtk2")
-          # dCt.HiH2A <- genetable3(b1.100b,b1.150b,b1.200b,"HiH2A")
-          # 
-          # 
-          # #Calculate delta delta Ct ()
-          # ddCtgenePI100 <- function(t){
-          #   t$ddCt <- NA
-          # 
-          #   median100PI <- median(t$dCt[t$times=="t100" & t$morphs=="PI"])
-          #   
-          #   t$ddCt[t$times=="t100"] <- t$dCt[t$times=="t100"] - median100PI
-          #   t$ddCt[t$times=="t150"] <- t$dCt[t$times=="t150"] - median100PI
-          #   t$ddCt[t$times=="t200"] <- t$dCt[t$times=="t200"] - median100PI
-          #   
-          #   t$foldchange <- 2^(-t$ddCt)
-          #   
-          #   return(t)
-          # }
-          # 
-          # ddCt.Lmtk2 <- ddCtgenePI100(dCt.Lmtk2)
-          # ddCt.HiH2A <- ddCtgenePI100(dCt.HiH2A)
-
-
-####################### Load the data ##########################
-
-b1.100 <- read.csv("/Users/sebmatlosz/Desktop/qPCRplatesdiff_thresh/Plate8_100_Lmtk2HiH2a.csv",header=TRUE)
+          
+####################### Load the qPCR data ##########################
+~
+# t100 - Lmtk2 & HiH2A
+b1.100 <- read.csv("~/Plate8_100_Lmtk2HiH2a.csv",header=TRUE)
 # t150 - Lmtk2 & HiH2a
-b1.150 <- read.csv("/Users/sebmatlosz/Desktop/qPCRplatesdiff_thresh/Plate5_150_Lmtk2HiH2a.csv",header=TRUE)
+b1.150 <- read.csv("~/Plate5_150_Lmtk2HiH2a.csv",header=TRUE)
 # t200 - Lmtk2 & HiH2a
-b1.200 <- read.csv("/Users/sebmatlosz/Desktop/qPCRplatesdiff_thresh/Plate1_200_Lmtk2HiH2a.csv",header=TRUE)
+b1.200 <- read.csv("~/Plate1_200_Lmtk2HiH2a.csv",header=TRUE)
 b1.200 <- b1.200[b1.200$Well!="G5",]
 b1.200$Ct.Mean[b1.200$Well=="H5"] <- b1.200$Ct[b1.200$Well=="H5"] 
 
 # t100 - MyelTF1 & SLC9A3R2
-b2.100 <- read.csv("/Users/sebmatlosz/Desktop/qPCRplatesdiff_thresh/Plate9_100_MyelTF1SLC9A3R2.csv",header=TRUE)
+b2.100 <- read.csv("~/Plate9_100_MyelTF1SLC9A3R2.csv",header=TRUE)
 b2.100 <- b2.100[b2.100$Well!="C12",]
 b2.100$Ct.Mean[b2.100$Well=="D12"] <- b2.100$Ct[b2.100$Well=="D12"] 
 b2.100 <- b2.100[b2.100$Well!="H12",]
 b2.100$Ct.Mean[b2.100$Well=="G12"] <- b2.100$Ct[b2.100$Well=="G12"]
 # t150 - MyelTF1 & SLC9A3R2
-b2.150 <- read.csv("/Users/sebmatlosz/Desktop/qPCRplatesdiff_thresh/Plate6_150_MyelTF1SLC9A3R2.csv",header=TRUE)
+b2.150 <- read.csv("~/Plate6_150_MyelTF1SLC9A3R2.csv",header=TRUE)
 b2.150 <- b2.150[b2.150$Well!="D10",]
 b2.150$Ct.Mean[b2.150$Well=="C10"] <- b2.150$Ct[b2.150$Well=="C10"]
 # t200 - MyelTF1
-b2.200Myel <- read.csv("/Users/sebmatlosz/Desktop/qPCRplatesdiff_thresh/Plate2_200_MyelTF1LRP11.csv",header=TRUE)
+b2.200Myel <- read.csv("~/Plate2_200_MyelTF1LRP11.csv",header=TRUE)
 # t200 - SLC9A3R2
-b2.200SLC <- read.csv("/Users/sebmatlosz/Desktop/qPCRplatesdiff_thresh/Plate3_200_SLC9A3R2ZFP2.csv",header=TRUE)
+b2.200SLC <- read.csv("~/Plate3_200_SLC9A3R2ZFP2.csv",header=TRUE)
 b2.200SLC <- b2.200SLC[b2.200SLC$Well!="G3",]
 b2.200SLC$Ct.Mean[b2.200SLC$Well=="H3"] <- b2.200SLC$Ct[b2.200SLC$Well=="H3"] 
 b2.200SLC <- b2.200SLC[b2.200SLC$Well!="B4",]
 b2.200SLC$Ct.Mean[b2.200SLC$Well=="A4"] <- b2.200SLC$Ct[b2.200SLC$Well=="A4"] 
 
 # t100 - Nkx23 and Ets2
-b3.100 <- read.csv("/Users/sebmatlosz/Desktop/qPCRplatesdiff_thresh/Plate10_100_Nkx23Ets2.csv",header=TRUE)
+b3.100 <- read.csv("~/Plate10_100_Nkx23Ets2.csv",header=TRUE)
 b3.100 <- b3.100[b3.100$Well!="F3",]
 b3.100$Ct.Mean[b3.100$Well=="E3"] <- b3.100$Ct[b3.100$Well=="E3"] 
 b3.100 <- b3.100[b3.100$Well!="F4",]
 b3.100$Ct.Mean[b3.100$Well=="E4"] <- b3.100$Ct[b3.100$Well=="E4"]
 # t150 - Nkx23 and Ets2
-b3.150 <- read.csv("/Users/sebmatlosz/Desktop/qPCRplatesdiff_thresh/Plate7_150_Nkx23Ets2.csv",header=TRUE)
+b3.150 <- read.csv("~/Plate7_150_Nkx23Ets2.csv",header=TRUE)
 b3.150 <- b3.150[b3.150$Well!="E3",]
 b3.150$Ct.Mean[b3.150$Well=="F3"] <- b3.150$Ct[b3.150$Well=="F3"] 
 b3.150 <- b3.150[b3.150$Well!="C7",]
@@ -124,31 +47,27 @@ b3.150$Ct.Mean[b3.150$Well=="D7"] <- b3.150$Ct[b3.150$Well=="D7"]
 b3.150 <- b3.150[b3.150$Well!="B9",]
 b3.150$Ct.Mean[b3.150$Well=="A9"] <- b3.150$Ct[b3.150$Well=="A9"]
 # t200 - Nkx23 and Ets2
-b3.200 <- read.csv("/Users/sebmatlosz/Desktop/qPCRplatesdiff_thresh/Plate4_200_Nkx23Ets2.csv",header=TRUE)
+b3.200 <- read.csv("~/Plate4_200_Nkx23Ets2.csv",header=TRUE)
 
-
-
-### 2020 plates
-# input all the data
 # t100 - NFiX-1 and RASSF4-2               H3 and H7 aren't good
-b4.100 <- read.csv("/Users/sebmatlosz/Desktop/qPCRplatesdiff_thresh/Plate16_100_NFiX-1RASSF4-2.csv",header=TRUE)
+b4.100 <- read.csv("~/Plate16_100_NFiX-1RASSF4-2.csv",header=TRUE)
 b4.100 <- b4.100[b4.100$Well!="H3",]
 b4.100$Ct.Mean[b4.100$Well=="G3"] <- b4.100$Ct[b4.100$Well=="G3"]
 b4.100 <- b4.100[b4.100$Well!="H7",]
 b4.100$Ct.Mean[b4.100$Well=="G7"] <- b4.100$Ct[b4.100$Well=="G7"]
 
 # t150 - NFiX-1 and RASSF4-2               F12 ain't good
-b4.150 <- read.csv("/Users/sebmatlosz/Desktop/qPCRplatesdiff_thresh/Plate15_150_NFiX-1RASSF4-2.csv",header=TRUE)
+b4.150 <- read.csv("~/Plate15_150_NFiX-1RASSF4-2.csv",header=TRUE)
 b4.150 <- b4.150[b4.150$Well!="F12",]
 b4.150$Ct.Mean[b4.150$Well=="E12"] <- b4.150$Ct[b4.150$Well=="E12"]
 
 # t200 - NFiX-1 and RASSF4-2              H12 ain't good
-b4.200 <- read.csv("/Users/sebmatlosz/Desktop/qPCRplatesdiff_thresh/Plate14_200_NFiX-1RASSF4-2.csv",header=TRUE)
+b4.200 <- read.csv("~/Plate14_200_NFiX-1RASSF4-2.csv",header=TRUE)
 b4.200 <- b4.200[b4.200$Well!="H12",]
 b4.200$Ct.Mean[b4.200$Well=="G12"] <- b4.200$Ct[b4.200$Well=="G12"]
 
 # t100 - ARF16-1 and MEiS1l-2           Not good: D9, D10, D11, D12, F10, H12
-b5.100 <- read.csv("/Users/sebmatlosz/Desktop/qPCRplatesdiff_thresh/Plate19_100_ARF16-1MEiS1l-2.csv", header=TRUE)
+b5.100 <- read.csv("~/Plate19_100_ARF16-1MEiS1l-2.csv", header=TRUE)
 #because there were some "Undetermined" Ct values, here Ct isn't numeric. Need to convert it
 b5.100$Ct <- as.numeric(as.character(b5.100$Ct))
 
@@ -165,9 +84,8 @@ b5.100$Ct.Mean[b5.100$Well=="E10"] <- b5.100$Ct[b5.100$Well=="E10"]
 b5.100 <- b5.100[b5.100$Well!="H12",]
 b5.100$Ct.Mean[b5.100$Well=="G12"] <- b5.100$Ct[b5.100$Well=="G12"]
 
-
 # t150 - ARF16-1 and MEiS1l-2           D12, F12 and H12 aren't good
-b5.150 <- read.csv("/Users/sebmatlosz/Desktop/qPCRplatesdiff_thresh/Plate18_150_ARF16-1MEiS1l-2.csv", header=TRUE)
+b5.150 <- read.csv("~/Plate18_150_ARF16-1MEiS1l-2.csv", header=TRUE)
 b5.150 <- b5.150[b5.150$Well!="D12",]
 b5.150$Ct.Mean[b5.150$Well=="C12"] <- b5.150$Ct[b5.150$Well=="C12"]
 b5.150 <- b5.150[b5.150$Well!="F12",]
@@ -176,28 +94,28 @@ b5.150 <- b5.150[b5.150$Well!="H12",]
 b5.150$Ct.Mean[b5.150$Well=="G12"] <- b5.150$Ct[b5.150$Well=="G12"]
 
 # t200 - ARF16-1 and MEiS1l-2          D3 and H8 ain't good
-b5.200 <- read.csv("/Users/sebmatlosz/Desktop/qPCRplatesdiff_thresh/Plate17_200_ARF16-1MEiS1l-2.csv", header=TRUE)
+b5.200 <- read.csv("~/Plate17_200_ARF16-1MEiS1l-2.csv", header=TRUE)
 b5.200 <- b5.200[b5.200$Well!="D3",]
 b5.200$Ct.Mean[b5.200$Well=="C3"] <- b5.200$Ct[b5.200$Well=="C3"]
 b5.200 <- b5.200[b5.200$Well!="H8",]
 b5.200$Ct.Mean[b5.200$Well=="G8"] <- b5.200$Ct[b5.200$Well=="G8"]
 
 # t100 - HiH3l-2 and ARMC1-1          E4 and F4 are really different, but I can't do anything about it. 
-b6.100 <- read.csv("/Users/sebmatlosz/Desktop/qPCRplatesdiff_thresh/Plate22_100_HiH3l2ARMC1-1.csv", header=TRUE)
+b6.100 <- read.csv("~/Plate22_100_HiH3l2ARMC1-1.csv", header=TRUE)
 
 # t150 - HiH3l-2 and ARMC1-1          H12 ain't good
-b6.150 <- read.csv("/Users/sebmatlosz/Desktop/qPCRplatesdiff_thresh/Plate21_150_HiH3l2ARMC1-1.csv", header=TRUE)
+b6.150 <- read.csv("~/Plate21_150_HiH3l2ARMC1-1.csv", header=TRUE)
 b6.150 <- b6.150[b6.150$Well!="H12",]
 b6.150$Ct.Mean[b6.150$Well=="G12"] <- b6.150$Ct[b6.150$Well=="G12"]
 
 # t200 - HiH3l-2 and ARMC1-1          G2 not good. H2 slightly better
-b6.200 <- read.csv("/Users/sebmatlosz/Desktop/qPCRplatesdiff_thresh/Plate20_200_HiH3l2ARMC1-1.csv", header=TRUE)
+b6.200 <- read.csv("~/Plate20_200_HiH3l2ARMC1-1.csv", header=TRUE)
 b6.200 <- b6.200[b6.200$Well!="G2",]
 b6.200$Ct.Mean[b6.200$Well=="H2"] <- b6.200$Ct[b6.200$Well=="H2"]
 
 # t100 - GLi3-1 and MEGF9-1        Not good: A2, A3, A4, A5, A6, A7, A8, F12, D11, D12              
-#Hmm. Lots of weird things there. Fortunately always one technical good. I suspect that the new seals aren't gud
-b7.100 <- read.csv("/Users/sebmatlosz/Desktop/qPCRplatesdiff_thresh/Plate25_100_GLi3-1MEGF9-1.csv", header=TRUE)
+#Hmm. Lots of weird things there. Fortunately always one technical good. I suspect that the new plate seals aren't the best
+b7.100 <- read.csv("~/Plate25_100_GLi3-1MEGF9-1.csv", header=TRUE)
 #because there were some "Undetermined" Ct values, here Ct isn't numeric. Need to convert it
 b7.100$Ct <- as.numeric(as.character(b7.100$Ct))
 
@@ -223,38 +141,38 @@ b7.100 <- b7.100[b7.100$Well!="D12",]
 b7.100$Ct.Mean[b7.100$Well=="C12"] <- b7.100$Ct[b7.100$Well=="C12"]
 
 # t150 - GLi3-1 and MEGF9-1          H4 not good
-b7.150 <- read.csv("/Users/sebmatlosz/Desktop/qPCRplatesdiff_thresh/Plate24_150_GLi3-1MEGF9-1.csv", header=TRUE)
+b7.150 <- read.csv("~/Plate24_150_GLi3-1MEGF9-1.csv", header=TRUE)
 b7.150 <- b7.150[b7.150$Well!="H4",]
 b7.150$Ct.Mean[b7.150$Well=="G4"] <- b7.150$Ct[b7.150$Well=="G4"]
 
-# t200 - GLi3-1 and MEGF9-1          All good.
-b7.200 <- read.csv("/Users/sebmatlosz/Desktop/qPCRplatesdiff_thresh/Plate23_200_GLi3-1MEGF9-1.csv", header=TRUE)
+# t200 - GLi3-1 and MEGF9-1          
+b7.200 <- read.csv("~/Plate23_200_GLi3-1MEGF9-1.csv", header=TRUE)
 
 # t100 - MAGUK-2 and Rhoguanin-1     A4 and A5 not good
-b8.100 <- read.csv("/Users/sebmatlosz/Desktop/qPCRplatesdiff_thresh/Plate28_100_MAGUK-2Rhoguanin-1.csv", header=TRUE)
+b8.100 <- read.csv("~/Plate28_100_MAGUK-2Rhoguanin-1.csv", header=TRUE)
 b8.100 <- b8.100[b8.100$Well!="A4",]
 b8.100$Ct.Mean[b8.100$Well=="B4"] <- b8.100$Ct[b8.100$Well=="B4"]
 b8.100 <- b8.100[b8.100$Well!="A5",]
 b8.100$Ct.Mean[b8.100$Well=="B5"] <- b8.100$Ct[b8.100$Well=="B5"]
 
 # t150 - MAGUK-2 and Rhoguanin-1      A4 not good
-b8.150 <- read.csv("/Users/sebmatlosz/Desktop/qPCRplatesdiff_thresh/Plate27_150_MAGUK-2Rhoguanin-1.csv", header=TRUE) 
+b8.150 <- read.csv("~/Plate27_150_MAGUK-2Rhoguanin-1.csv", header=TRUE) 
 b8.150 <- b8.150[b8.150$Well!="A4",]
 b8.150$Ct.Mean[b8.150$Well=="B4"] <- b8.150$Ct[b8.150$Well=="B4"]
 
 # t200 - MAGUK-2 and Rhoguanin-1      A4 and A5 not good
-b8.200 <- read.csv("/Users/sebmatlosz/Desktop/qPCRplatesdiff_thresh/Plate26_200_MAGUK-2Rhoguanin-1.csv", header=TRUE)
+b8.200 <- read.csv("~/Plate26_200_MAGUK-2Rhoguanin-1.csv", header=TRUE)
 b8.200 <- b8.200[b8.200$Well!="A4",]
 b8.200$Ct.Mean[b8.200$Well=="B4"] <- b8.200$Ct[b8.200$Well=="B4"]
 b8.200 <- b8.200[b8.200$Well!="A5",]
 b8.200$Ct.Mean[b8.200$Well=="B5"] <- b8.200$Ct[b8.200$Well=="B5"]
 
 # Lists of Morph=Sample 
-# morphs in the samples for the 100 timepoint (s25,s26,s27,s28,s29,s30,s31,s32,s33,s34,s35,s36)
+# order of morphs in the samples for the 100 timepoint (s25,s26,s27,s28,s29,s30,s31,s32,s33,s34,s35,s36)
 s100 <- c("PL","PL","PI","LB","LB","SB","PI","PI","PL","SB","SB","LB")
-# morphs in the samples for the 150 timepoint - second batch (13,14,15,16,17,18,19,20,21,22,23,24)
+# order of morphs in the samples for the 150 timepoint - second batch (13,14,15,16,17,18,19,20,21,22,23,24)
 s150 <- c("PL","PL","PI","LB","LB","SB","PI","PI","PL","SB","SB","LB")
-# morphs in the samples for the 200 timepoint (s1,s10,s11,s12,s2,s3,s4,s5,s6,s7,s8,s9)
+# order of morphs in the samples for the 200 timepoint (s1,s10,s11,s12,s2,s3,s4,s5,s6,s7,s8,s9)
 s200 <- c("PL","SB","SB","SB","PL","PL","LB","LB","LB","PI","PI","PI")
 
 # timepoints
@@ -263,7 +181,6 @@ timepoint150 <- "t150"
 timepoint200 <- "t200"
 
 ## Function to extract certain columns and values from the tables
-# if I don't want to see the 'error' message:  value.var="Cq.Mean" in the dcast
 # Compared to the previous qPCRs I did in 2019, they seemed to have changed "Cq.Mean" into "Ct.Mean"
 
 tafla <- function(t,s,c) {
@@ -313,13 +230,13 @@ b8.150a <- tafla(b8.150,s150,timepoint150)
 b8.200a <- tafla(b8.200,s200,timepoint200)
 
 #################### Specifically make recaps so that it is easier to use #############################
-#ATH, do not bother with the $Reference column. It will not be used later in the script.
+#do not bother with the $Reference column. It will not be used later in the script.
 b1 <- rbind(b1.100a, b1.150a, b1.200a)
 
 #Need to tweak things a bit for b2
-#First, we don't need b2.200Myel. 
+# First, we don't need b2.200Myel. 
 # Then we need b2.200SLC, but the column names are different, so I need to change that.
-#This is scuffed but I will change the ZFP2 column into a MyelTF1 column. I am not using this data anyway.
+# This is scuffed but I will change the title of the ZFP2 column into "MyelTF1" so that rbind works. I am not using this ZFP2/MyelTF1 data anyway.
 colnames(b2.200SLCa) <- c("Sample","actb","SLC9A3R2","Ub2l3","MyelTF1","Reference", "Morph","Timepoint")
 b2 <- rbind(b2.100a, b2.150a, b2.200SLCa)
 
