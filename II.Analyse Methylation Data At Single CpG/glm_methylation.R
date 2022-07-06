@@ -76,16 +76,16 @@ dfFinal <- glmallresidues()
 
 #Only keep residues that have a significant p.value after Bonferroni correction
 #First correct with Bonferroni
-        v$Morph_pvalue_corrected <- p.adjust(v$Morph_pvalue, method = "bonferroni", n = length(v$Morph_pvalue))
-        v$Timepoint_pvalue_corrected <- p.adjust(v$Timepoint_pvalue, method = "bonferroni", n = length(v$Timepoint_pvalue))
-        v$Sex_pvalue_corrected <- p.adjust(v$Sex_pvalue, method = "bonferroni", n = length(v$Sex_pvalue))
-        v$MorphXTimepoint_pvalue_corrected <- p.adjust(v$MorphXTimepoint_pvalue, method = "bonferroni", n = length(v$MorphXTimepoint_pvalue))
+        dfFinal$Morph_pvalue_corrected <- p.adjust(dfFinal$Morph_pvalue, method = "bonferroni", n = length(dfFinal$Morph_pvalue))
+        dfFinal$Timepoint_pvalue_corrected <- p.adjust(dfFinal$Timepoint_pvalue, method = "bonferroni", n = length(dfFinal$Timepoint_pvalue))
+        dfFinal$Sex_pvalue_corrected <- p.adjust(dfFinal$Sex_pvalue, method = "bonferroni", n = length(dfFinal$Sex_pvalue))
+        dfFinal$MorphXTimepoint_pvalue_corrected <- p.adjust(dfFinal$MorphXTimepoint_pvalue, method = "bonferroni", n = length(dfFinal$MorphXTimepoint_pvalue))
 
 #Only keep the CpGs with corrected p.value < 0.05
-        signifMorph <- filter(v,Morph_pvalue_corrected <= 0.05)
-        signifTime <- filter(v,Timepoint_pvalue_corrected <= 0.05)
-        signifSex <- filter(v,Sex_pvalue_corrected <= 0.05)
-        signifMorphXTime <- filter(v,MorphXTimepoint_pvalue_corrected <= 0.05)
+        signifMorph <- filter(dfFinal,Morph_pvalue_corrected <= 0.05)
+        signifTime <- filter(dfFinal,Timepoint_pvalue_corrected <= 0.05)
+        signifSex <- filter(dfFinal,Sex_pvalue_corrected <= 0.05)
+        signifMorphXTime <- filter(dfFinal,MorphXTimepoint_pvalue_corrected <= 0.05)
 
         
 # write.csv(signifMorph,"~/glm_signif_Morphs.csv", row.names = FALSE)
