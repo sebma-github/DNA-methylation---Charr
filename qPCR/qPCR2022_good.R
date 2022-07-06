@@ -3,7 +3,9 @@ library(reshape2)
 library(ggplot2)
           
 ####################### Load the qPCR data ##########################
-~
+#Sometimes, one ofthe technical replicates was bad, so I removed it here and replaced the mean by the value of the good technical replicate.
+#I could have done it directly in Excel, but I just did it here.
+
 # t100 - Lmtk2 & HiH2A
 b1.100 <- read.csv("~/Plate8_100_Lmtk2HiH2a.csv",header=TRUE)
 # t150 - Lmtk2 & HiH2a
