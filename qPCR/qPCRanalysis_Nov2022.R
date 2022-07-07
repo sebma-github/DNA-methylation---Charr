@@ -1,15 +1,4 @@
 # Final script to interpret qPCR data
-# Both Lea's method and my method for calculating ddCt will be used.
-# My method will be used to highlight the differences of gene expression between:
-#    -Morphs
-#    -Time
-#    -The interaction between Morph and Time
-# Lea's method will be used to highlight the differences of gene expression between:
-#    -Morphs (which will give a slightly different point of view)
-#
-# The data will then be represented in a table similar to those made by Ehsan for the same purpose.
-
-#Packages required
 library(dplyr)
 library(reshape2)
 library(DataCombine)
@@ -22,26 +11,7 @@ library(agricolae)
 library(forecast)
 library(AICcmodavg)
 
-
-#First, let's load the data: 
-#Those were made using my method (One PI 100 as the reference)
-#But they also have the dCt values. No primer efficiencies taken into account.
-ddCt.Lmtk2 <- readRDS("/Users/sebmatlosz/Desktop/qPCR_dCtobjects/noNorm/ddCt-Lmtk2.rds")
-ddCt.HiH2A <- readRDS("/Users/sebmatlosz/Desktop/qPCR_dCtobjects/noNorm/ddCt-HiH2A.rds")
-ddCt.SLC9A3R2 <- readRDS("/Users/sebmatlosz/Desktop/qPCR_dCtobjects/noNorm/ddCt-SLC9A3R2.rds")
-ddCt.Nkx232 <- readRDS("/Users/sebmatlosz/Desktop/qPCR_dCtobjects/noNorm/ddCt-Nkx232.rds")
-ddCt.NFiX1 <- readRDS("/Users/sebmatlosz/Desktop/qPCR_dCtobjects/noNorm/ddCt-NFiX1.rds")
-ddCt.RASSF42 <- readRDS("/Users/sebmatlosz/Desktop/qPCR_dCtobjects/noNorm/ddCt-RASSF42.rds")
-ddCt.ARF161 <- readRDS("/Users/sebmatlosz/Desktop/qPCR_dCtobjects/noNorm/ddCt-ARF161.rds")
-ddCt.MEiS1l2 <- readRDS("/Users/sebmatlosz/Desktop/qPCR_dCtobjects/noNorm/ddCt-MEiS1l2.rds")
-ddCt.HiH3l2 <- readRDS("/Users/sebmatlosz/Desktop/qPCR_dCtobjects/noNorm/ddCt-HiH3l2.rds")
-ddCt.ARMC11 <- readRDS("/Users/sebmatlosz/Desktop/qPCR_dCtobjects/noNorm/ddCt-ARMC11.rds")
-ddCt.GLi31 <- readRDS("/Users/sebmatlosz/Desktop/qPCR_dCtobjects/noNorm/ddCt-GLi31.rds")
-ddCt.MEGF91 <- readRDS("/Users/sebmatlosz/Desktop/qPCR_dCtobjects/noNorm/ddCt-MEGF91.rds")
-ddCt.MAGUK2 <- readRDS("/Users/sebmatlosz/Desktop/qPCR_dCtobjects/noNorm/ddCt-MAGUK2.rds")
-ddCt.Rhoguanin1 <- readRDS("/Users/sebmatlosz/Desktop/qPCR_dCtobjects/noNorm/ddCt-Rhoguanin1.rds")
-
-#Those were made by taking into account the primer efficiencies
+#Load the data made by taking into account the primer efficiencies:
 #Only use the REr columns.
 ddCt.Lmtk2 <- readRDS("/Users/sebmatlosz/Desktop/qPCR_dCtobjects/primerEffNorm/REr_Lmtk2.rds")
 ddCt.HiH2A <- readRDS("/Users/sebmatlosz/Desktop/qPCR_dCtobjects/primerEffNorm/REr_HiH2A.rds")
