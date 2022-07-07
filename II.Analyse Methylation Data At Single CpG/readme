@@ -1,4 +1,4 @@
 
-The file **methmin1_48samples.csv** was created by aligning all sequenced reads to the masked genome, and filtering out all CpGs that did not have >10X coverage in all samples.
+The file methmin1_48samples.csv was created by aligning all sequenced reads to the masked genome, and filtering out all CpGs that did not have >10X coverage in all samples.
 This leaves us with a file having methylation information for 10340 CpG sites in all 48 samples.
 This file is used both to run PCA and GLM analyses.
