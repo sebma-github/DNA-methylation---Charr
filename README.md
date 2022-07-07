@@ -4,7 +4,7 @@ This repository contains all scripts used for the paper "DNA methylation differe
 Analyses with the MethylKit R package were done under Version 1.1.456 – © 2009-2018 RStudio, Inc.   
 The rest of the analyses were done under R version 4.1.2 (2021-11-01) -- "Bird Hippie"
 
-RRBS reads are available on ENA with the accession number PRJEB45551.
+RRBS reads are available on ENA with the accession number **PRJEB45551**.
 
 ## I. Get methylation data from raw RRBS reads:
 ### Assessment of C-T SNPs from whole genome data:
@@ -34,7 +34,6 @@ This file was used for most methylation analyses: whether they be PCA based, gen
 ## II. Analyse methylation data at single CpG sites:
 A number of analyses were done on this methylation data ( **xxxxxxxx**) in order to identify methylation differences.
 
-
 ### PCA
 
 ### GLM
@@ -42,6 +41,15 @@ A number of analyses were done on this methylation data ( **xxxxxxxx**) in order
 
 ## III. Analyse methylation data at the region level
 ###  
+
+
+## IV. qPCR Analysis
+The raw data files from the qPCR experiment are available in the "/raw_qPCR_data/" folder.
+The script **qPCR_graphmaking.R** uses these files to create recaps of the Relative Expression Ratios (RErs) for each gene and make qqplots/bar graphs.
+REr tables can be found in the /tables/ folder in RDS format.
+The script **qPCRanalysis.R** uses the REr files to run linear models on the gene expression data.
+Outputs can be found in the /results/ folder.
+
 
 
 ## II.3 Perform analysis in Rstudio 
