@@ -1,1 +1,5 @@
+Use the data in ./raw_qPCR_data/ with the script qPCR_graphmaking.R
+With this script, generate ./results/qPCR_EffNorm.pdf and ./results/qqNorm_RER_posttransformation.pdf
 
+Use the data in ./tables/ with the script qPCRanalysis.R
+With this script, generate ./results/qPCRAnalysisRecap_REr_withtransformation.csv
