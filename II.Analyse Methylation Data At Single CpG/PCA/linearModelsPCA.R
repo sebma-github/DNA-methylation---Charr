@@ -11,8 +11,7 @@ library(forecast)
 library(AICcmodavg)
 
 #meth.min1 object generated using the BentvsLimn.R script
-
-meth.min1df <- read.table("/Users/sebmatlosz/Desktop/methylation/methmin1_48samples.csv", sep=",", header=TRUE)
+  meth.min1df <- read.table("/Users/sebmatlosz/Desktop/methylation/methmin1_48samples.csv", sep=",", header=TRUE)
                   
 ##Use the annotations to create an ID
   annotation <- meth.min1df[,c(1,2,3,4)]
