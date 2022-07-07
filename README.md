@@ -46,6 +46,25 @@ REr tables can be found in the /tables/ folder in RDS format.
 The script **qPCRanalysis.R** uses the REr files to run linear models on the gene expression data.       
 Outputs can be found in the /results/ folder.    
 
+## V. GO analysis
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## II.3 Perform analysis in Rstudio 
