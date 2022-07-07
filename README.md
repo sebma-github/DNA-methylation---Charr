@@ -39,10 +39,6 @@ A number of analyses were done on this methylation data ( **xxxxxxxx**) in order
 
 ### GLM
 
-### DSS
-At a reviewer's request, we accounted for coverage biases in the glm analyses with the DSS package, see **XXXXX.R**    
-The results of DSS with basic models were very similar to the basic glm models, suggesting that coverage was not a major concern in this study.        
-Because of the impossibility to use missing data with the DSS package (i.e. Sex information had some NA values), we kept the glm analysis in the paper, and this DSS analyses is thus only provided here for information purposes.
 
 ## III. Analyse methylation data at the region level
 ###  
