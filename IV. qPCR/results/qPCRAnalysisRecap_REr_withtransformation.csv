@@ -1,0 +1,15 @@
+GeneName,Morph.pvalue.,LB,SB,PI,PL,Time.pvalue.,X100,X150,X200,Interaction.pvalue.
+Lmtk2,0.22,a,a,a,a,0.02,b,a,b,0.14
+HiH2A,7.32E-06,c,a,b,ab,3.68E-06,b,a,c,0.65
+SLC9A3R2,2.07E-03,b,a,b,b,1.10E-12,c,b,a,0.97
+Nkx232,0.27,a,a,a,a,9.02E-08,a,a,b,0.62
+NFiX1,0.03,ab,ab,a,b,1.99E-28,c,b,a,4.47E-03
+RASSF42,0.30,a,a,a,a,2.06E-05,b,a,b,0.17
+ARF161,3.46E-08,c,b,b,a,1.93E-05,b,a,c,0.59
+MEiS1l2,0.11,a,a,a,a,6.17E-07,c,b,a,4.48E-03
+HiH3l2,2.69E-05,b,a,b,b,4.43E-08,a,b,c,0.42
+ARMC11,1.16E-05,c,a,b,ab,0.21,a,a,a,0.35
+Gli31,0.02,ab,b,a,ab,0.19,a,a,a,0.05
+MEGF91,2.62E-06,b,a,a,a,1.60E-07,b,a,a,0.57
+MAGUK2,0.39,a,a,a,a,2.68E-14,b,a,a,0.06
+Rhoguanin1,4.91E-07,b,a,a,a,5.60E-09,a,b,c,3.51E-03
