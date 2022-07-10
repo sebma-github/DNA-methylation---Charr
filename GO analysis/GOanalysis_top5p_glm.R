@@ -6,7 +6,7 @@ library(genomation)
 library(sqldf)
 
 #Load the data of interest, for example here, the CpGs statistically significant btw morphs in the glm analysis.
-    top5pMorph <- read.csv("/Users/sebmatlosz/Desktop/filesforGOanalysis/glm_signif_Morphs_090222.csv")
+    top5pMorph <- read.csv("~/glm_signif_Morphs.csv")
 
 #Replace the "NW_" and "NC_" strings into "chr"
     top5pMorph$NCBI <- str_replace(top5pMorph$NCBI, "NW_", "chr")
@@ -14,7 +14,7 @@ library(sqldf)
 
 #Get distance to transcription start site
     df <- top5pMorph
-    gene.obj=readTranscriptFeatures("/Users/sebmatlosz/Documents/annotated_charr_genome/goodcharrgenome.bed")
+    gene.obj=readTranscriptFeatures("~/goodcharrgenome.bed") #get the annotation from the Salvelinus sp. assembly, make sure you change it into .bed format
     names(df)[9] <- "chrom"   #ATH make sure you specify the correct columns, it can change depending on the df!
     names(df)[8] <- "start"   #ATH make sure you specify the correct columns, it can change depending on the df!
     df$start <- as.numeric(df$start)
@@ -73,7 +73,7 @@ betterdf <- merge(x,y,by.y="targetrow",by.x="row.names(x)",all=TRUE)
     toppar$Scaffold<-paste(toppar$NW,toppar$temporary, sep="")
 
 #Load Salvelinus sp. protein data
-    stortData <- read.table(file='/Users/sebmatlosz/Desktop/canada_genome_overview_protein.tsv', sep = '\t', header=TRUE)
+    stortData <- read.table(file='~/canada_genome_overview_protein.tsv', sep = '\t', header=TRUE)
 
     toppar$Tilestart <- as.numeric(as.character(toppar$Tilestart))
     toppar$nedra <- toppar$Tilestart-10000
