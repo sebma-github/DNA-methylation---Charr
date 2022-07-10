@@ -8,9 +8,8 @@ RRBS reads are available on ENA with the accession number **PRJEB45551**.
 
 ## I. Get methylation data from raw RRBS reads:
 #### Assessment of C-T SNPs from whole genome data:
-We used whole genome sequencing data from 8 individuals (1 male and 1 female for each morph) to call for C-T SNPs with **gettingSNPs.sh**       
-This script maps the WGS reads to the genome, changes some formats, filters the reads and selects for C-T SNPs.        
-The output is: **filteredCT.vcf**
+We used whole genome sequencing data from 8 individuals (1 male and 1 female for each morph) to call for C-T SNPs.
+The output is **mergedCT.vcf**. 
 
 #### Mask genome with these SNPs
 Download Salvelinus sp. genome in fasta format from https://www.ncbi.nlm.nih.gov/assembly/GCF_002910315.2/      
@@ -25,7 +24,7 @@ See **getmethylcoverage.sh**, use **PhiX.fasta** and **adapters.fasta**.
 See **xxxxxxx.R**
 The output is: 
 
-This file was used for most methylation analyses: whether they be PCA based, generalized linear models or even DSS.
+This file was used for most methylation analyses: whether they be PCA or glm based.
 
 ## II. Analyse methylation data at single CpG sites:
 A number of analyses were done on this methylation data ( **xxxxxxxx**) in order to identify methylation differences.
@@ -50,7 +49,7 @@ Outputs can be found in the /results/ folder.
 
 
 
-
+## VI. Repeat Element Analysis
 
 
 
