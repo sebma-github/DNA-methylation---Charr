@@ -1,0 +1,36 @@
+GO.ID	Term	Annotated	Significant	Expected	weightedFisher
+GO:0006334	nucleosome assembly	152	4	0.11	4.2e-06
+GO:0042742	defense response to bacterium	640	5	0.46	8.2e-05
+GO:0051295	establishment of meiotic spindle localiz...	30	2	0.02	0.00022
+GO:1901223	negative regulation of NIK/NF-kappaB sig...	69	2	0.05	0.00115
+GO:0030071	regulation of mitotic metaphase/anaphase...	118	2	0.09	0.00330
+GO:0008205	ecdysone metabolic process	5	1	0	0.00362
+GO:0051673	membrane disruption in other organism	5	1	0	0.00362
+GO:0000964	mitochondrial RNA 5'-end processing	5	1	0	0.00362
+GO:0051663	oocyte nucleus localization involved in ...	6	1	0	0.00434
+GO:1902956	regulation of mitochondrial electron tra...	6	1	0	0.00434
+GO:0051758	homologous chromosome movement towards s...	6	1	0	0.00434
+GO:1901208	negative regulation of heart looping	7	1	0.01	0.00506
+GO:2000321	positive regulation of T-helper 17 cell ...	7	1	0.01	0.00506
+GO:1901856	negative regulation of cellular respirat...	7	1	0.01	0.00506
+GO:0000965	mitochondrial RNA 3'-end processing	7	1	0.01	0.00506
+GO:1901211	negative regulation of cardiac chamber f...	7	1	0.01	0.00506
+GO:0072068	late distal convoluted tubule developmen...	7	1	0.01	0.00506
+GO:0045478	fusome organization	8	1	0.01	0.00579
+GO:0031952	regulation of protein autophosphorylatio...	162	2	0.12	0.00611
+GO:1905832	positive regulation of spindle assembly	9	1	0.01	0.00651
+GO:0003167	atrioventricular bundle cell differentia...	9	1	0.01	0.00651
+GO:0046604	positive regulation of mitotic centrosom...	9	1	0.01	0.00651
+GO:1904801	positive regulation of neuron remodeling	9	1	0.01	0.00651
+GO:0075259	spore-bearing structure development	10	1	0.01	0.00723
+GO:0070900	mitochondrial tRNA modification	10	1	0.01	0.00723
+GO:0071169	establishment of protein localization to...	11	1	0.01	0.00795
+GO:0000349	generation of catalytic spliceosome for ...	11	1	0.01	0.00795
+GO:0032621	interleukin-18 production	11	1	0.01	0.00795
+GO:0042780	tRNA 3'-end processing	12	1	0.01	0.00867
+GO:0090235	regulation of metaphase plate congressio...	12	1	0.01	0.00867
+GO:0045653	negative regulation of megakaryocyte dif...	12	1	0.01	0.00867
+GO:0072019	proximal convoluted tubule development	13	1	0.01	0.00939
+GO:0072385	minus-end-directed organelle transport a...	13	1	0.01	0.00939
+GO:0070649	formin-nucleated actin cable assembly	13	1	0.01	0.00939
+GO:1990048	anterograde neuronal dense core vesicle ...	14	1	0.01	0.01011
