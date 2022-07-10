@@ -100,8 +100,6 @@ library(sqldf)
 
 #Load the reference of gene ontology for genes in this assembly
     canada <- readMappings(file = "/Users/sebmatlosz/Desktop/geneidgo.db")
-
-# oll gene_id sem eru ?? listanum
     genenames <- names(canada)
     genalisti <- factor(as.integer(genenames %in% listi)) #listi is generated above
     names(genalisti) <- genenames
@@ -116,7 +114,7 @@ library(sqldf)
     resultFisher
 
     allRes <- GenTable(GOdata, weightedFisher = resultFisher, topNodes=25)
-    write.table(allRes, "~/GOresults_glm_signif_Morphs.tsv", quote = FALSE, sep="\t", row.names = FALSE)
+    write.table(allRes, "~/GOresults_glmsignif_morphs_270222.tsv", quote = FALSE, sep="\t", row.names = FALSE)
 
 
 
