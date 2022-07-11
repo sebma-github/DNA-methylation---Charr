@@ -1,3 +1,0 @@
-
-linearModelsPCA.R uses the methmin1_48samples.csv to run ANOVA analysis on each principal component.
-ResiduesBehindPCs.R uses the methmin1_48samples.csv to extract the weight of each CpG for each PC.

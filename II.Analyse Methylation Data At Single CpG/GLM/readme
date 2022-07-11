@@ -1,3 +1,0 @@
-
-Use the script glm_methylation.R with the file methmin1_48samples.csv to create tables of the statistical significance of each CpG's methylation for each variable (Morph, Time, Sex, Morph by Time).
-These tables can be found in /results/
