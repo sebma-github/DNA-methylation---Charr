@@ -21,7 +21,7 @@ Use **4change-string-to-chr.sh** to change the "NC_" or "NW_" string to a "chr" 
 
 #### Filter the "coverage" files: (again, this is a weird Bismark syntax. "coverage" files refer to methylation information files)
 We used the MethylKit package to further filter the coverage files in order to keep only CpGs that have >10X coverage in every one of the 48 samples. 
-See **BentvsLimn.R**  
+See **Filter10Xcov.R**, use with **Matrices_for_analysis_in_R.xlsx**.     
 The output is: **methmin1_48samples.csv**   
 This csv file is used for most methylation analyses: whether they be PCA or glm based.  
 
