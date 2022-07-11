@@ -19,7 +19,7 @@ Use **2aligntogenome.sh** to align the merged reads to the masked Salvelinsu sp.
 Use **3getcoverage.sh** to extract methylation information (confusingly called "coverage" in Bismark).  
 Use **4change-string-to-chr.sh** to change the "NC_" or "NW_" string to a "chr" string. This is because of MethylKit requirements.
 
-### Filter the coverage files:
+#### Filter the "coverage" files (again, this is a weird Bismark syntax. "coverage" files refer to methylation information files):
 We used the MethylKit package to further filter the coverage files in order to keep only CpGs that have >10X coverage in every one of the 48 samples. 
 See **BentvsLimn.R**  
 The output is: **methmin1_48samples.csv**   
