@@ -1,1 +1,4 @@
 
+use the text files:
+DMRsbetweenmorphsforextraction.tsv, DMRsbetweenstageforextraction.tsv and DMRsqPCRgenesforextraction.tsv
+to extract methylation information for these DMRs in the coverage files generated with Bismark methylation extractor.
