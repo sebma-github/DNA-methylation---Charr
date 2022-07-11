@@ -9,29 +9,27 @@ RRBS reads are available on ENA with the accession number **PRJEB45551**.
 ## I. Get methylation data from raw RRBS reads:
 #### Assessment of C-T SNPs from whole genome data:
 We used whole genome sequencing data from 8 individuals (1 male and 1 female for each morph) to call for C-T SNPs.
-The output is **mergedCT.vcf**. 
+The list of 4 659 191 SNPs is **mergedCT.vcf**. 
 
 #### Mask genome with these SNPs
-Download Salvelinus sp. genome in fasta format from https://www.ncbi.nlm.nih.gov/assembly/GCF_002910315.2/      
-"mask genome for SNPs with bedtools maskfasta function" -> add this to script       
-"index genome with bismark_genome_preparation"  -> ditto       
-see **maskgenomeandindex.sh**      
+Download Salvelinus sp. genome in fasta format from https://www.ncbi.nlm.nih.gov/assembly/GCF_002910315.2/        
+Use the **maskgenomeandindex.sh**  to mask the genome with the SNPs and index it with Bismark.    
 
 #### Trim and merge reads from RRBS Illumina sequencing and align them to the masked genome to get methylation coverage files:
 See **getmethylcoverage.sh**, use **PhiX.fasta** and **adapters.fasta**.
 
 ### Use MethylKit to further filter the coverage files in order to keep only CpGs that have >10X coverage in every one of the 48 samples.
-See **xxxxxxx.R**
-The output is: 
-
-This file was used for most methylation analyses: whether they be PCA or glm based.
+See **BentvsLimn.R**
+The output is: **methmin1_48samples.csv**   
+This csv file is used for most methylation analyses: whether they be PCA or glm based.
 
 ## II. Analyse methylation data at single CpG sites:
-A number of analyses were done on this methylation data ( **xxxxxxxx**) in order to identify methylation differences.
+A number of analyses were done on this methylation data (**methmin1_48samples.csv**) in order to identify methylation differences.
 
 #### PCA
+#### GLM
+#### Compare PCA and GLM results
 
-### GLM
 
 
 ## III. Analyse methylation data at the region level
@@ -46,7 +44,10 @@ The script **qPCRanalysis.R** uses the REr files to run linear models on the gen
 Outputs can be found in the /results/ folder.    
 
 ## V. GO analysis
-
+GO analysis can be run on genes located close to CpGs of interest.
+List of CpGs of interest can be found in the outputs of GLM or PCA analysis.
+Using the script **GOanalysis.R**, alongside these CpGs of interest, the annotation from the Salvelinus sp. assembly in .bed format, **canada_genome_overview_protein.tsv** (Salvelinus sp. protein data) and **geneidgo.db** (GO IDs for genes in the assembly), run GO analysis.  
+The outputs are available in the /results/ folder.
 
 
 ## VI. Repeat Element Analysis
