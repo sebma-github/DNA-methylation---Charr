@@ -1,14 +1,5 @@
-We used whole genome sequencing data from 8 individuals (1 male and 1 female for each morph) to call for C-T SNPs.
+Start with masking the genome.
+Then trim the reads, align to masked genome and extract methylation information.
+Last, filter the methylation outputs for >10X CpG coverage.
 
-The list of the 4 659 191 C-T SNPs is mergedCT.vcf
-
-We then used this list to mask the Salvelinus sp. genome (that you can download in fasta format from https://www.ncbi.nlm.nih.gov/assembly/GCF_002910315.2/), and indexed the masked genome with Bismark.
-For that, see the script maskgenomeandindex.sh
-
-
-
-
-Sequencing reads for the 48 samples used in this study are publicly available on ENA, under accession number PRJEB45551.
-
-
-We then used the MethylKit package in R to filter out CpGs with a coverage <10X in any of the samples, with the script XXXXXXXX
+The final output from all this is methmin1_48samples.csv
