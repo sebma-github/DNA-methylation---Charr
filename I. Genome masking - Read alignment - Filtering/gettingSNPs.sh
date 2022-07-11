@@ -76,6 +76,6 @@ vcftools --vcf merged.vcf --recode --out filtered --remove-filtered-all
 ####################################################################
 
 ###Identify C-T SNPs
-grep -P "\t[CT]\t[CT]\t" filtered.vcf > filteredCT.vcf 
+grep -P "\t[CT]\t[CT]\t" merged.vcf > mergedCT.vcf 
 
 
