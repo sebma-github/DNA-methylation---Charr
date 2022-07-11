@@ -2,3 +2,4 @@
 Use Filter10Xcov.R with Matrices_for_analysis_in_R.xlsx to keep only the CpGs that are covered >10X for all of the samples.
 
 Note: There are different sheets in the Matrices_for_analysis_in_R.xlsx file. Make sure you select the "BentvsLimn" one.
+The output is methmin1_48samples.csv
