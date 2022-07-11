@@ -3,4 +3,7 @@ use the text files:
 DMRsbetweenmorphsforextraction.tsv, DMRsbetweenstageforextraction.tsv and DMRsqPCRgenesforextraction.tsv with extractmethinfo.sh
 to extract methylation information for these DMRs, from the coverage files generated with Bismark methylation extractor.
 
-Use the extracted .covdf files (in /output) to make graphs of average methylation or residue methylation with 
+Use AverageMethylationGraphs.R and the extracted .covdf files (in /Output) to make graphs of average methylation over the regions.
+The results from that are in /Output2/.
+Use ResidueMethylationGraphs.R and the extracted .covdf files (in /Output) to display CpG methylation over the regions.
+The results from that are in /Output2/.
