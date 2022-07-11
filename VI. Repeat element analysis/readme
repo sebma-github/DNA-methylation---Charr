@@ -1,1 +1,7 @@
-
+use the text files:
+xxx
+xxx
+xxx
+xxx
+To have a list of DMRs or non DMRs of interest, with their scaffold and start position.
+Then use the script extractFASTA_from_list.pl to extract the corresponding FASTA sequences from the unmasked and unindexed Salvelinus sp. genome.
