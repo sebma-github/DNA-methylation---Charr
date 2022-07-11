@@ -1,3 +1,5 @@
+#!/bin/bash
+
 ##the script must be run in the directory where the bismark transformed genome is.
 ##the files need to be processed in sam format and not bam
 ##looks in a directory and transforms all .bam into .sam
