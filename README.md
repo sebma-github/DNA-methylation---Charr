@@ -8,13 +8,13 @@ RRBS reads are available on ENA with the accession number **PRJEB45551**.
 
 ## I. Genome masking - Read alignment - Filtering:
 #### Genome masking:
-We used whole genome sequencing data from 8 individuals (1 male and 1 female for each morph) to call for C-T SNPs.
-The list of 4 659 191 SNPs is **mergedCT.vcf** (currently, this file is a bit too big for github, I need to find a place where to make it accessible).  
+We used whole genome sequencing data from 8 individuals (1 male and 1 female for each morph) to call for C-T SNPs.  
+The list of 4 659 191 SNPs is **mergedCT.vcf** (currently, this file is a bit too big for github, I need to find a place where to make it accessible).   
 Download Salvelinus sp. genome in fasta format from https://www.ncbi.nlm.nih.gov/assembly/GCF_002910315.2/          
 Use the **maskgenomeandindex.sh**  to mask the genome with the SNPs and index it with Bismark.    
 
 #### Trim, merge and align reads:
-Use **1cleanandmerge.sh** with **PhiX.fasta** and **adapters.fasta** to remove PhiX and adapter sequences, as well as trim for quality and merge the paired reads.
+Use **1cleanandmerge.sh** with **PhiX.fasta** and **adapters.fasta** to remove PhiX and adapter sequences, as well as trim for quality and merge the paired reads.  
 Use **2aligntogenome.sh** to align the merged reads to the masked Salvelinsu sp. genome.  
 Use **3getcoverage.sh** to extract methylation information (confusingly called "coverage" in Bismark).  
 Use **4change-string-to-chr.sh** to change the "NC_" or "NW_" string to a "chr" string. This is because of MethylKit requirements.
