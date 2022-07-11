@@ -29,11 +29,11 @@ This csv file is used for most methylation analyses: whether they be PCA or glm 
 ## II. Analyse methylation data at single CpG sites:
 A number of analyses were done on this methylation data (**methmin1_48samples.csv**) in order to identify methylation differences.
 
-#### PCA
+PCA:   
 **linearModelsPCA.R** uses the methmin1_48samples.csv to run ANOVA analysis on each principal component.  
 **ResiduesBehindPCs.R** uses the methmin1_48samples.csv to extract the weight of each CpG for each PC.
 
-#### GLM
+GLM:  
 Use the script **glm_methylation.R** with the file **methmin1_48samples.csv** to create tables of the statistical significance of each CpG's methylation for each variable (Morph, Time, Sex, Morph by Time). 
 These tables can be found in /results/
 
