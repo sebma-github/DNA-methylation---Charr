@@ -44,8 +44,8 @@ The script **qPCRanalysis.R** uses the REr files to run linear models on the gen
 Outputs can be found in the /results/ folder.    
 
 ## V. GO analysis
-GO analysis can be run on genes located close to CpGs of interest.
-List of CpGs of interest can be found in the outputs of GLM or PCA analysis.
+GO analysis can be run on genes located close to CpGs of interest.  
+Tables of CpGs of interest can be found in the outputs of GLM or PCA analysis.
 Using the script **GOanalysis.R**, alongside these CpGs of interest, the annotation from the Salvelinus sp. assembly in .bed format, **canada_genome_overview_protein.tsv** (Salvelinus sp. protein data) and **geneidgo.db** (GO IDs for genes in the assembly), run GO analysis.  
 The outputs are available in the /results/ folder.
 
