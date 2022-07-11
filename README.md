@@ -44,8 +44,8 @@ But in this study, XXX pairwise comparisons were made, see **XXXXXXX.csv**
 The advantage of doing multiple pairwise comparisons is that some involve a smaller amount of samples, which means that the number of CpGs that pass the filtering cutoff of >10X for all is higher.    
 To redo all the comparisons, you will need to update **Matrices_for_analysis_in_R.xlsx** and create a spreadsheet for each pairwise comparison. 
 
-The total list of regions showing differences in methylation between morphs in one (or more) of the pairwise comparisons is **DMRsbetweenmorphsRecap.csv** 
-The total list of regions showing differences in methylation between stages in one (or more) of the pairwise comparisons is **DMRsbetweenstageRecap.csv**   
+The total list of regions showing differences in methylation between morphs in one (or more) of the pairwise comparisons is **DMRsbetweenmorphsRecap.csv**  
+The total list of regions showing differences in methylation between stages in one (or more) of the pairwise comparisons is **DMRsbetweenstageRecap.csv**     
 The total list of regions taken for analysis when comparing morphs is **ALLTILESuniqbtwmorphs.tsv** (i.e. this contains both DMRs and non-DMRs)   
 The total list of regions taken for analysis when comparing stages is **ALLTILESuniqbtwstages.tsv** (i.e. this contains both DMRs and non-DMRs)
 
