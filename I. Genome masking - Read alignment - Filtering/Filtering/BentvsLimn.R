@@ -21,7 +21,7 @@ bestfile.list <- file.list[[1]]
 sample.id=list(as.list(samplerecapmatrix[,3]))
 bestsample.id <- sample.id[[1]]
 
-##Change treatment values from chr to num (for some reason the top of the script doesn't change anything)
+##Change treatment values from chr to num 
 treatment=c(samplerecapmatrix[,4])
 numtreatment <- as.numeric(treatment)
 
