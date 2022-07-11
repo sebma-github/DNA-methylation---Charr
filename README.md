@@ -6,10 +6,10 @@ The rest of the analyses were done under R version 4.1.2 (2021-11-01) -- "Bird H
 
 RRBS reads are available on ENA with the accession number **PRJEB45551**.
 
-## I. Get methylation data from raw RRBS reads:
+## I. Genome masking - Read alignment - Filtering:
 #### Assessment of C-T SNPs from whole genome data:
 We used whole genome sequencing data from 8 individuals (1 male and 1 female for each morph) to call for C-T SNPs.
-The list of 4 659 191 SNPs is **mergedCT.vcf**. 
+The list of 4 659 191 SNPs is **mergedCT.vcf** (currently, this file is a bit too big for github, I need to find a place where to make it accessible). 
 
 #### Mask genome with these SNPs
 Download Salvelinus sp. genome in fasta format from https://www.ncbi.nlm.nih.gov/assembly/GCF_002910315.2/        
@@ -27,10 +27,12 @@ This csv file is used for most methylation analyses: whether they be PCA or glm 
 A number of analyses were done on this methylation data (**methmin1_48samples.csv**) in order to identify methylation differences.
 
 #### PCA
+**linearModelsPCA.R** uses the methmin1_48samples.csv to run ANOVA analysis on each principal component.  
+**ResiduesBehindPCs.R** uses the methmin1_48samples.csv to extract the weight of each CpG for each PC.
+
 #### GLM
-#### Compare PCA and GLM results
-
-
+Use the script glm_methylation.R with the file **methmin1_48samples.csv** to create tables of the statistical significance of each CpG's methylation for each variable (Morph, Time, Sex, Morph by Time). 
+These tables can be found in /results/
 
 ## III. Analyse methylation data at the region level
 ###  
@@ -73,9 +75,7 @@ gff2gtl.pl
 gtf2bed.pl
 "kind of modifycovfiles.sh"
 
-R scripts
 
-R scripts to make the graphs
 
 ## III.1 Extract coverage information for specific loci. 
 extractgeneinfobetter.sh 
