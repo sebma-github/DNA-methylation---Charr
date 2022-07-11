@@ -60,28 +60,24 @@ and use two custom scripts: **gff2gtf.pl** and **gtf2bed.pl**
 
 ## VI. Repeat Element Analysis
 
-use the text files: **DMRsbetweenmorphsforFASTA.txt**, **DMRsbetweenstageforFASTA.txt**, **nonDMRsbetweenmorphsforFASTA.tsv** and **nonDMRsbetweenstagesforFASTA.tsv**
+Use the text files: **DMRsbetweenmorphsforFASTA.txt**, **DMRsbetweenstageforFASTA.txt**, **nonDMRsbetweenmorphsforFASTA.tsv** and **nonDMRsbetweenstagesforFASTA.tsv**
 to have a list of DMRs or non DMRs of interest, with their scaffold and start position. 
   
-Then use the script **extractFASTA_from_list.pl** to extract the corresponding FASTA sequences from the unmasked and unindexed Salvelinus sp. genome. 
+Then use the script **extractFASTA_from_list.pl** to extract the corresponding FASTA sequences from the unmasked and unindexed Salvelinus sp. genome.   
 These FASTA sequences can be found under /outputFASTA/  
   
 Repeat enrichment analysis was done using the online tool RepeatMasker with ”rmblast” as a search engine and the database Dfam3.0.  
 DNA sequences in FASTA format were tested against the Dfam3.0 Danio rerio transposable elements database. 
 
+## VII. Extract methylation info for specific loci
+
+Use the text files: **DMRsbetweenmorphsforextraction.tsv**, **DMRsbetweenstageforextraction.tsv** and **DMRsqPCRgenesforextraction.tsv** with **extractmethinfo.sh** to extract methylation information for these DMRs, from the coverage files generated with Bismark methylation extractor.   
+(From / I. Genome masking - Read alignment - Filtering/Read trimming and alignment/3getcoverage.sh) 
+
+To make graphs representing every CpG in this region, use xxxxx.R
 
 
 
+# XX. Miscellaneous
 
-
-
-## III.1 Extract coverage information for specific loci. 
-extractgeneinfobetter.sh 
-Needs to be run in the directory where the coverage files are (generated in II.2).
-Use DMRsbetweenmorphsforextraction.tsv / DMRsbetweenstageforextraction.tsv and DMRsqPCRgenesforextraction.tsv to extract the respective loci.
-
-# III.2 Use those coverage files to create graphs at both residue and DMR level.
-
-R scripts
-
-R scripts
+Contains different tables and data frames 
