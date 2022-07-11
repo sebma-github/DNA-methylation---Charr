@@ -38,8 +38,16 @@ Use the script **glm_methylation.R** with the file **methmin1_48samples.csv** to
 These tables can be found in /results/
 
 ## III. Analyse methylation data at the region level
-###  
+Use **BentvsLimn.R**  with  
+This is ***ONE*** example of how to run a pairwise comparison in MethylKit, looking at Benthic vs Limnetic individuals.  
+In this study, XXX pairwise comparisons were made, see **XXXXXXX.csv**  
+The advantage of doing multiple pairwise comparisons is that some involve a smaller amount of samples, which means that the number of CpGs that pass the filtering cutoff of >10X for all is higher.    
+To redo all the comparisons, you will need to update **Matrices_for_analysis_in_R.xlsx** and create a spreadsheet for each pairwise comparison. 
 
+The total list of regions showing differences in methylation between morphs in one (or more) of the pairwise comparisons is **DMRsbetweenmorphsRecap.csv** 
+The total list of regions showing differences in methylation between stages in one (or more) of the pairwise comparisons is **DMRsbetweenstageRecap.csv**   
+The total list of regions taken for analysis when comparing morphs is **ALLTILESuniqbtwmorphs.tsv** (i.e. this contains both DMRs and non-DMRs)   
+The total list of regions taken for analysis when comparing stages is **ALLTILESuniqbtwstages.tsv** (i.e. this contains both DMRs and non-DMRs)
 
 ## IV. qPCR Analysis
 The raw data files from the qPCR experiment are available in the "/raw_qPCR_data/" folder.        
