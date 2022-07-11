@@ -1,4 +1,4 @@
 
 use the text files:
-DMRsbetweenmorphsforextraction.tsv, DMRsbetweenstageforextraction.tsv and DMRsqPCRgenesforextraction.tsv with 
+DMRsbetweenmorphsforextraction.tsv, DMRsbetweenstageforextraction.tsv and DMRsqPCRgenesforextraction.tsv with extractmethinfo.sh
 to extract methylation information for these DMRs, from the coverage files generated with Bismark methylation extractor.
