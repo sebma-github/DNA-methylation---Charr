@@ -1,6 +1,7 @@
 library(methylKit)
 
 ##Import the matrix of choice (.xlsx) and be sure that treatment and gender are in num and not chr
+#There are different sheets in the Matrices_for_analysis_in_R.xlsx file. Make sure you select the "BentvsLimn".
 ##Matrix must be 5 columns in this order: RealName  FileName  SimplifiedName  Treatment  Sex
 library(readxl)
 samplerecapdf <- read_excel("~/Matrices_for_analysis_in_R.xlsx", sheet="BentvsLimn",
