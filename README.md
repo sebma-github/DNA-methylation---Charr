@@ -54,8 +54,8 @@ Tables of CpGs of interest can be found in the outputs of GLM or PCA analysis.
 Use the script **GOanalysis.R**, alongside these CpGs of interest, the annotation from the Salvelinus sp. assembly in .bed format, **canada_genome_overview_protein.tsv** (Salvelinus sp. protein data) and **geneidgo.db** (GO IDs for genes in the assembly), to perform GO analysis.  
 The outputs are available in the /results/ folder.
 
-NOTE: to get the annotation in .bed format, I download the annotation in .gff3 from https://www.ncbi.nlm.nih.gov/assembly/GCF_002910315.2/
-Then used two custom scripts: **gff2gtf.pl** and **gtf2bed.pl**
+NOTE: to get the annotation in .bed format, download the annotation in .gff3 from https://www.ncbi.nlm.nih.gov/assembly/GCF_002910315.2/
+and use two custom scripts: **gff2gtf.pl** and **gtf2bed.pl**
 
 
 ## VI. Repeat Element Analysis
