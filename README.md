@@ -38,9 +38,9 @@ Use the script **glm_methylation.R** with the file **methmin1_48samples.csv** to
 These tables can be found in /results/
 
 ## III. Analyse methylation data at the region level
-Use **BentvsLimn.R**  with  
-This is ***ONE*** example of how to run a pairwise comparison in MethylKit, looking at Benthic vs Limnetic individuals.  
-In this study, XXX pairwise comparisons were made, see **XXXXXXX.csv**  
+Use **BentvsLimn.R**  with  **Matrices_for_analysis_in_R.xlsx**
+This is ***ONE*** example of how to run a pairwise comparison in MethylKit, here looking at Benthic vs Limnetic individuals.  
+But in this study, XXX pairwise comparisons were made, see **XXXXXXX.csv**  
 The advantage of doing multiple pairwise comparisons is that some involve a smaller amount of samples, which means that the number of CpGs that pass the filtering cutoff of >10X for all is higher.    
 To redo all the comparisons, you will need to update **Matrices_for_analysis_in_R.xlsx** and create a spreadsheet for each pairwise comparison. 
 
