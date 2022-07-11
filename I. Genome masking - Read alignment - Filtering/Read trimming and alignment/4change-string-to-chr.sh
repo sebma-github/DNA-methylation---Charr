@@ -1,3 +1,5 @@
+#!/bin/bash
+
 ##To use the MethylKit R package, the coverage files need to have a "chr" string at the beginning of the scaffold name. 
 ##needs to be run in the directory where the coverage files are.
 ##for each file ending in bismark.cov remove the first 3 characters of each line. In this case, the "NC_" string
