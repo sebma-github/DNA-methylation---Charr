@@ -1,3 +1,5 @@
+Sequencing reads for the 48 samples used in this study are publicly available on ENA, under accession number PRJEB45551.
+
 Use 1cleanandmerge.sh with PhiX.fasta and adapters.fasta to remove PhiX and adapter sequences, as well as trim for quality and merge the paired reads.
 Use 2aligntogenome.sh to align the merged reads to the masked Salvelinsu sp. genome.
 Use 3getcoverage.sh to extract methylation information (confusingly called "coverage" in Bismark).
