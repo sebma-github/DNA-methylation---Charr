@@ -99,7 +99,7 @@ library(Rgraphviz)
 library(sqldf)
 
 #Load the reference of gene ontology for genes in this assembly
-    canada <- readMappings(file = "/Users/sebmatlosz/Desktop/geneidgo.db")
+    canada <- readMappings(file = "~/geneidgo.db")
     genenames <- names(canada)
     genalisti <- factor(as.integer(genenames %in% listi)) #listi is generated above
     names(genalisti) <- genenames
