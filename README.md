@@ -30,8 +30,8 @@ This csv file is used for most methylation analyses: whether they be PCA or glm 
 A number of analyses were done on this methylation data (**methmin1_48samples.csv**) in order to identify methylation differences.
 
 PCA:   
-**linearModelsPCA.R** uses the methmin1_48samples.csv to run ANOVA analysis on each principal component.  
-**ResiduesBehindPCs.R** uses the methmin1_48samples.csv to extract the weight of each CpG for each PC.
+**linearModelsPCA.R** uses the **methmin1_48samples.csv** to run ANOVA analysis on each principal component.  
+**ResiduesBehindPCs.R** uses the **methmin1_48samples.csv** to extract the weight of each CpG for each PC.
 
 GLM:  
 Use the script **glm_methylation.R** with the file **methmin1_48samples.csv** to create tables of the statistical significance of each CpG's methylation for each variable (Morph, Time, Sex, Morph by Time). 
@@ -40,7 +40,7 @@ These tables can be found in /results/
 ## III. Analyse methylation data at the region level
 Use **BentvsLimn.R**  with  **Matrices_for_analysis_in_R.xlsx**
 This is ***ONE*** example of how to run a pairwise comparison in MethylKit, here looking at Benthic vs Limnetic individuals.  
-But in this study, XXX pairwise comparisons were made, see **XXXXXXX.csv**  
+But in this study, 35 pairwise comparisons were made, see **PairwiseComparisonList.csv**  
 The advantage of doing multiple pairwise comparisons is that some involve a smaller amount of samples, which means that the number of CpGs that pass the filtering cutoff of >10X for all is higher.    
 To redo all the comparisons, you will need to update **Matrices_for_analysis_in_R.xlsx** and create a spreadsheet for each pairwise comparison. 
 
