@@ -65,7 +65,6 @@ The outputs are available in the /results/ folder.
 NOTE: to get the annotation in .bed format, download the annotation in .gff3 from https://www.ncbi.nlm.nih.gov/assembly/GCF_002910315.2/
 and use two custom scripts: **gff2gtf.pl** and **gtf2bed.pl**
 
-
 ## VI. Repeat Element Analysis
 
 Use the text files: **DMRsbetweenmorphsforFASTA.txt**, **DMRsbetweenstageforFASTA.txt**, **nonDMRsbetweenmorphsforFASTA.tsv** and **nonDMRsbetweenstagesforFASTA.tsv**
@@ -82,9 +81,10 @@ DNA sequences in FASTA format were tested against the Dfam3.0 Danio rerio transp
 Use the text files: **DMRsbetweenmorphsforextraction.tsv**, **DMRsbetweenstageforextraction.tsv** and **DMRsqPCRgenesforextraction.tsv** with **extractmethinfo.sh** to extract methylation information for these DMRs, from the coverage files generated with Bismark methylation extractor.   
 (From / I. Genome masking - Read alignment - Filtering/Read trimming and alignment/3getcoverage.sh) 
 
-To make graphs representing every CpG in this region, use xxxxx.R
-
-
+Use **AverageMethylationGraphs.R** and the extracted .covdf files (in /Output) to make graphs of average methylation over the regions.
+The results from that are in /Output2/.
+Use **ResidueMethylationGraphs.R** and the extracted .covdf files (in /Output) to display CpG methylation over the regions.
+The results from that are in /Output2/.
 
 ## XX. Miscellaneous
 
