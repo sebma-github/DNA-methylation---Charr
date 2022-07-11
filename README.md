@@ -78,6 +78,11 @@ To make graphs representing every CpG in this region, use xxxxx.R
 
 
 
-# XX. Miscellaneous
+## XX. Miscellaneous
 
-Contains different tables and data frames 
+Contains a number of tables relating to the study.  
+
+***Sampling dates, water temperature, calculated tau-somites***: 170810_day_degree_sheet_2016_and_2017_23january2018.ods  
+***Sample information for ENA submission***: ENA-reads_info.xlsx  
+***RRBS sequencing information***: Table_of_individual_information_and_bisulfite_conversion_results.xlsx  
+***Distance between DMRs and the closest TSS***: DisttoTSSTable.csv 
