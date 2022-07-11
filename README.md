@@ -60,8 +60,7 @@ and use two custom scripts: **gff2gtf.pl** and **gtf2bed.pl**
 
 ## VI. Repeat Element Analysis
 
-use the text files: 
-**DMRsbetweenmorphsforFASTA.txt**, **DMRsbetweenstageforFASTA.txt**, **nonDMRsbetweenmorphsforFASTA.tsv** and **nonDMRsbetweenstagesforFASTA.tsv**  
+use the text files: **DMRsbetweenmorphsforFASTA.txt**, **DMRsbetweenstageforFASTA.txt**, **nonDMRsbetweenmorphsforFASTA.tsv** and **nonDMRsbetweenstagesforFASTA.tsv**
 to have a list of DMRs or non DMRs of interest, with their scaffold and start position. 
   
 Then use the script **extractFASTA_from_list.pl** to extract the corresponding FASTA sequences from the unmasked and unindexed Salvelinus sp. genome. 
