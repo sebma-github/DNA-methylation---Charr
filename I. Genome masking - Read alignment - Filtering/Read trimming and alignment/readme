@@ -1,1 +1,4 @@
-
+Use 1cleanandmerge.sh with PhiX.fasta and adapters.fasta to remove PhiX and adapter sequences, as well as trim for quality and merge the paired reads.
+Use 2aligntogenome.sh to align the merged reads to the masked Salvelinsu sp. genome.
+Use 3getcoverage.sh to extract methylation information (confusingly called "coverage" in Bismark).
+Use 4change-string-to-chr.sh to change the "NC_" or "NW_" string to a "chr" string. This is because of MethylKit requirements.
