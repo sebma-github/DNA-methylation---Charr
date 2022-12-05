@@ -9,7 +9,7 @@ RRBS reads are available on ENA with the accession number **PRJEB45551**.
 ## I. Genome masking - Read alignment - Filtering:
 #### Genome masking:
 We used whole genome sequencing data from 8 individuals (1 male and 1 female for each morph) to call for C-T SNPs.  
-The list of 4 659 191 SNPs is **mergedCT.vcf** (currently, this file is a bit too big for github, I need to find a place where to make it accessible).    
+The list of 4 659 191 SNPs is **mergedCT.vcf** (available on Google Drive at https://drive.google.com/drive/folders/1CRAscunCNy8EQhCTZXI30ENBBvNWvRPR).    
   
 Download Salvelinus sp. genome in fasta format from https://www.ncbi.nlm.nih.gov/assembly/GCF_002910315.2/  
 Use **maskgenome.sh** to mask the genome with the SNPs.   
